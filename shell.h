@@ -1,6 +1,8 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#define BUFF_SIZE 1024
+#define BACKET_SIZE 64
 /**
  * struct enter_s - holds value and key of hash table
  * @value: key data
@@ -11,6 +13,13 @@ typedef struct enter_s
 	char *value;
 	char *key;
 } enter_t;
+
+typedef enum environ_action_s
+{
+	GET_VAL, GET_KEYS, INIT_ENVIRON,
+	SET_ENTRY, DEL_ENTRY, CLEAR_ENVIRON,
+	CONV_TO_2D
+} environ_action_t;
 
 /**
  * struct cmd_s - holds information
