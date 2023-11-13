@@ -35,4 +35,16 @@ int set_val(obj_t *map, const char *key, const char *val)
 	return (1);
 }
 
-
+/**
+ * sigint_handler - signal handler function for SIGINT signal(ctrl + c)
+ * @sign: signal number
+ */
+void sigint_handler(int sign)
+{
+	(void)sign;
+	fflush(stdin);
+	if (isatty(STDIN_FILENO))
+	{
+		_fprint(1, "\n%s> ", _global_states(GET_SHELL_NAME, NULL));
+	}
+}
