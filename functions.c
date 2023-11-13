@@ -1,5 +1,8 @@
 #include "shell.h"
 /**
+ * _itoa - converts num to string
+ * @num: number to be converted
+ * Return: string converted
  */
 char *_itoa(int num)
 {
@@ -17,6 +20,16 @@ char *_itoa(int num)
 		return (num_str);
 	}
 	if (num < 0)
+	{
+		num_str[0] = '-';
+		num *= -1;
+	}
+	while (num)
+	{
+		num_str[--length] = num % 10 + 48;
+		num /= 10;
+	}
+	return (num_str);
 }
 
 /**
