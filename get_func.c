@@ -52,3 +52,27 @@ int gethash_code(const char *key)
 	}
 	return (hash % BACKET_SIZE);
 }
+
+/**
+ * get_value - retrieves the associated value with a given key
+ * @obj: object containing key value pair
+ * @key: to search for value
+ * return: value associated with key if not found
+ */
+char *get_val(obj_t *obj, const char *key)
+{
+	int indx_backt;
+	list_t *backt;
+	enter_t *enter;
+
+	indx_backt = gethash_code(key);
+	backt = obj->backets[indx_backt];
+	while (backt)
+	{
+		enter = backt->data;
+		if (_strcmp(enter->key, key))
+			return (enter->value);
+		backet = backet->next;
+	}
+	return (NULL);
+}
