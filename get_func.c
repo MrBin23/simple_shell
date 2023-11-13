@@ -76,3 +76,23 @@ char *get_val(obj_t *obj, const char *key)
 	}
 	return (NULL);
 }
+
+/**
+ * init_mapt - initialises a new hash table
+ * Return: pointer to map inintialised
+ */
+obj_t *init_mapt(void)
+{
+	obj_t *my_map;
+	int rator;
+
+	my_map = malloc(sizeof(obj_t));
+	rator = 0;
+
+	while (rator <  BACKET_SIZE)
+	{
+		my_map->backets[rator] = NULL;
+		rator++;
+	}
+	return (my_map);
+}
