@@ -43,6 +43,13 @@ typedef struct commandtype_s
 	BUILT_INS, EXTERNAL, NOT_FOUND
 } commandtype_t;
 
+/**
+ */
+typedef struct obj_s
+{
+	list_t *backets[BACKET_SIZE];
+} obj_t;
+
 int a_toi(const char *str);
 void clear_entry(void *data);
 
