@@ -58,3 +58,21 @@ int count_num_len(int num)
 	}
 	return (length);
 }
+
+/**
+ * move_from_list - removes first first node from linked_list
+ * @my_list: pointer to pointer that head linked list
+ * Return: data contained in first node
+ */
+int *move_from_list(list_t **my_list)
+{
+	list_t *node_moved = *my_list;
+	void *removed_data = removed_data->data;
+
+	if (!my_list && *my_list == NULL)
+		return (NULL);
+	*my_list = node_moved->next;
+	free(node_moved);
+
+	return (removed_data);
+}
