@@ -31,5 +31,26 @@ char *_strcat(const char *str1, const char *str2)
 }
 
 /**
+ * _strdup - duplicates a string
+ * @str: string to duplicate
+ * Return: duplicated string
  */
+char *_strdup(const char *str)
+{
+	size_t length, rator;
+	char *new_str;
 
+	len = _strlen(str);
+	new_str = (char *)malloc(sizeof(char) * (length + 1));
+	if (new_str == NULL)
+		return (NULL);
+	new_str[len] = 0;
+	rator = 0;
+
+	while (rator < length)
+	{
+		new_str[rator] = str[rator];
+		rator++;
+	}
+	return (new_str);
+}
