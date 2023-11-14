@@ -1,0 +1,73 @@
+#include "shell.h"
+/**
+ * status_management - manages status variable based on specified action
+ * @cmd_action: action to perfrom on status variable
+ * @new_status: updates status variable
+ * Return: current value  of status variable
+ */
+int status_management(status_cmd_t cmd_action, int new_status)
+{
+	static int status;
+
+	if (cmd_action == MY_STATUS_UPDATE)
+	{
+		status = new_status;
+	}
+	return (status);
+}
+
+/**
+ * state_var_global - holds variables used in difreent places
+ * @action: the action to perform on the global state
+ * @str: pointer to a pointer ro a char, use dto pass or recieve data
+ */
+void *state_var_global(global_cmd_t action, char **str)
+{
+	static char *my_line, *shell_name;
+	static char **2darray;
+	static int line_num;
+
+	if (action == SET_LINE)
+		my_line = *str;
+	if (action == SET_SHELL_NAME)
+		shell_name = *str;
+	if (action == GET_LINE)
+		return (my_line);
+	if (action == GET_SHELL_NAME)
+		return (shell_name);
+	if (action == GET_LINE_NUMBER)
+		return (&line_num);
+	if (action == INCREMENT_LINE_NUMBER)
+		line_num++;
+	if (action == SET_2D)
+		2darray = *str;
+	if (action == GET_2D)
+		return (2darray);
+	return (NULL);
+}
+
+/**
+ * environ_acces_var - allows global variable in programne
+ * @action: applied to env
+ * @
+ */
+void environ_access_var(environ_action_t action, const char *key, const char val)
+{
+	static obj_t *my_map;
+
+	if (action == INIT_ENV)
+		my_map = _init_map();
+	else if (action == SET_ENTRY)
+		_set_value(my_map, key, val);
+	else if (action == GET_VAL)
+		return (_strdup(_get_value(my_map, key)));
+	else if (action == GET_KEYS)
+		return (_get_keys(my_map));
+	else if (action == CONV_TO_2D)
+		return (_conv_env_into_2d_array());
+	else if (action == CLEAR_ENV)
+		_clear_map(my_map);
+	else if (action == DEL_ENTRY)
+		_delete_entry(my_map, key);
+	return (NULL);
+}
