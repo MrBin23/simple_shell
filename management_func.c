@@ -72,3 +72,37 @@ void environ_access_var(environ_action_t action, const char *key, const char val
 		_delete_entry(my_map, key);
 	return (NULL);
 }
+
+/**
+ * built_in_management - manages builtin in app
+ * @action: action applied on builtin management
+ * @name: builtin name
+ * @function: executed function
+ * Return: NULL
+ */
+builtin_t built_in_management(builtin_cmd_t action, char *name,
+		int (*function)(cmd_t *cmd))
+{
+	static int obj_size;
+	static builtin_t built[0];
+	int rator;
+
+	if (action == GET_BUILTIN)
+	{
+		rator = 0;
+		while (rator < size)
+		{
+			if (_strcmp(built[rator].name, name))
+				return (built[rator].functios);
+			rator++;
+		}
+	}
+
+	if (action == SET_BUILTIN)
+	{
+		_copy(built[obj_size].name, name, _strlen(name));
+		built[obj_size].function = function;
+		obj_size++;
+	}
+	return (NULL);
+}
