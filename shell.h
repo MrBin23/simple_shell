@@ -34,6 +34,13 @@ typedef struct cmd_s
 	commandtype_t type;
 } cmd_t;
 
+/**
+ */
+typedef enum builtin_cmd_s
+{
+	GET_BUILTIN,
+	SET_BUILTIN
+} builtin_cmd_t;
 
 /**
  *
