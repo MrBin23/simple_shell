@@ -42,3 +42,18 @@ int _stringcompare(const char *string1, const char *string2)
 		return (1);
 	return (0);
 }
+/**
+ *_stringlenght - function checks lenght of string
+ *
+ *@string: String to check
+ *Return: Always the number of strings
+ */
+size_t _stringlenght(const char *string)
+{
+	size_t lenght;
+
+	lenght = 0;
+	while (string && s[lenght])
+		lenght++;
+	return (lenght);
+}
