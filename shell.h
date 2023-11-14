@@ -74,5 +74,7 @@ typedef enum global_cmd_s
 
 int a_toi(const char *str);
 void clear_entry(void *data);
+int del_entry(map_t *map, const char *key);
+void *free_command(void *data);
 
 #endif

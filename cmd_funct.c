@@ -3,12 +3,12 @@
  * free_command - frees command
  * @data: free this data
  */
-void *free_command(voaid *data)
+void *free_command(void *data)
 {
 	cmd_t *command;
 
 	command = data;
-	_free_split(command->args);
+	free_split(command->args);
 	free(data);
 }
 

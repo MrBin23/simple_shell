@@ -11,7 +11,7 @@ int del_entry(map_t *map, const char *key)
 	int ret_ind;
 	enter_t *my_entry;
 
-	ret_ind = _get_hash_code(key);
+	ret_ind = gethash_code(key);
 	my_list = map->backets[ret_ind];
 	if (!list)
 		return (0);
@@ -19,7 +19,7 @@ int del_entry(map_t *map, const char *key)
 	if (_strcmp(my_entry->key, key))
 	{
 		map->backets[ret_ind] = list->next;
-		_clear_entry(list->data);
+		clear_entry(list->data);
 		free(list);
 		return (0);
 	}
@@ -30,7 +30,7 @@ int del_entry(map_t *map, const char *key)
 		{
 			temp = list->next;
 			list->next = list->next->next;
-			_clear_entry(temp->data);
+			clear_entry(temp->data);
 			free(temp);
 			break;
 		}
