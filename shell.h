@@ -34,6 +34,13 @@ typedef struct cmd_s
 	commandtype_t type;
 } cmd_t;
 
+/**
+ */
+typedef enum builtin_cmd_s
+{
+	GET_BUILTIN,
+	SET_BUILTIN
+} builtin_cmd_t;
 
 /**
  *
@@ -49,6 +56,21 @@ typedef struct obj_s
 {
 	list_t *backets[BACKET_SIZE];
 } obj_t;
+
+/**
+ */
+typedef enum status_cmd_s
+{
+	MY_STATUS_UPDATE, GET_STATUS
+} status_cmd_t;
+
+/**
+ */
+typedef enum global_cmd_s
+{
+	GET_LINE, GET_LINE_NUMBER, GET_SHELL_NAME, SET_LINE,
+	SET_SHELL_NAME, INCREMENT_LINE_NUMBER, SET_2D, GET_2D
+} global_cmd_t;
 
 int a_toi(const char *str);
 void clear_entry(void *data);
