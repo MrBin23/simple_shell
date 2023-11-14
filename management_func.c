@@ -49,7 +49,8 @@ void *state_var_global(global_cmd_t action, char **str)
 /**
  * environ_acces_var - allows global variable in programne
  * @action: applied to env
- * @
+ * @key: used to add and recieve data
+ * Return: null
  */
 void environ_access_var(environ_action_t action, const char *key, const char val)
 {
