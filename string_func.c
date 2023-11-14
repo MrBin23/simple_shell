@@ -54,3 +54,32 @@ char *_strdup(const char *str)
 	}
 	return (new_str);
 }
+
+/**
+ * strslice - creates a new string slice from the specified input string
+ * @my_line: line to be sliced
+ * @start: starting index of sli
+ * @end: end index of sli
+ * Return: dynamically allocated string slice
+ */
+char *str_slice(const char *my_line, int start, int end)
+{
+	int length, rator;
+	char *sli;
+
+	if (start < 0)
+		start = 0;
+	length = _strlen(my_line);
+	if (length < end || end < 0)
+		end = length;
+	sli = (char *)malloc(sizeof(char) * (end - start + 1));
+	rator = 0;
+
+	while (start + rator < end)
+	{
+		sli[rator] = line[start + rator];
+		rator++;
+	}
+	sli[rator] = 0;
+	return (sli);
+}
