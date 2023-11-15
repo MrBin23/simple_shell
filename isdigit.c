@@ -13,7 +13,7 @@ int isdigit(const char *str)
 	}
 	if (*str == '-' || *str == '+')
 	{
-		str**;
+		str++;
 	}
 	while (*str)
 	{
@@ -22,4 +22,22 @@ int isdigit(const char *str)
 		str++;
 	}
 	return (1);
+}
+/**
+ * listlenght - calculate the lenght of a linked list
+ *
+ *@lists: to the lenght of a linked list
+ *Return: The lenght of a list
+ */
+size_t listlenght(const list *lists)
+{
+	size_t lenght;
+
+	lenght = 0;
+	while (lists)
+	{
+		lists = lists->next;
+		lenght++;
+	}
+	return (lenght);
 }
