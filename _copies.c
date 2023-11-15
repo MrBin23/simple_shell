@@ -12,7 +12,7 @@ char *_copies(char *dest, const char *source, size_t size)
 	size_t iterates;
 
 	iterates = 0;
-	while (iter < size)
+	while (iterates < size)
 	{
 		dest[iterates] = sources[iterates];
 		iterates++;
@@ -26,12 +26,12 @@ char *_copies(char *dest, const char *source, size_t size)
  *@commd: Contains info bout commands
  *Return: 0 success or error
  */
-int _environmt(command_t *commd)
+int _environmt(cmd_t *commd)
 {
 	char **iterates;
 	(void)commd;
 
-	iterates = _environ;
+	iterates = __environ;
 	if (!iterates)
 	{
 		return (1);
