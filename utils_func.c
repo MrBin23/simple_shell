@@ -11,7 +11,7 @@ void *feed_environ_var(**env)
 	while (env)
 	{
 		new_entry = _split(*env, "=");
-		environ_management(SET_ENTRY, new_entry[0], new_entry[1]);
+		environ_access_management(SET_ENTRY, new_entry[0], new_entry[1]);
 		free_split(&new_entry);
 		env++;
 	}

@@ -52,7 +52,7 @@ void *state_var_global(global_cmd_t action, char **str)
  * @key: used to add and recieve data
  * Return: null
  */
-void environ_access_var(environ_action_t action, const char *key, const char val)
+void environ_access_management(environ_action_t action, const char *key, const char val)
 {
 	static obj_t *my_map;
 

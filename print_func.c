@@ -21,7 +21,7 @@ int fputs_num(int fd, int num)
 	int prints;
 
 	prints = 0;
-	if(!num)
+	if (!num)
 	{
 		write(fd, "0", 1);
 		return (1);
@@ -61,7 +61,7 @@ int _fprint(int fd, const char *format, ...)
 			if (is_cent)
 			{
 				if (format[indx] == 'd')
-					prints = prints + _fput_number(fd, va_arg(args, int));
+					prints = prints + fput_num(fd, va_arg(args, int));
 				else if (format[indx] == 's')
 					prints = prints + _fput(fd, va_arg(args, char));
 				else
