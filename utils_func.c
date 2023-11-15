@@ -3,6 +3,7 @@
  * feed_environ_var - feeds environ varible into a  system
  * environment function
  * @env: pointer to array of environ variable
+ * Return: void
  */
 void *feed_environ_var(**env)
 {
@@ -28,7 +29,7 @@ char **conv_env_to_2darray(void)
 	char *temp[2];
 	size_t len;
 
-	rator = my_key = environ_management(GET_KEYS, NULL, NULL);
+	rator = my_key = environ_access_management(GET_KEYS, NULL, NULL);
 	len = _listlen(my_key);
 	arry = malloc(sizeof(char *) * (len + 1));
 	if (arry == NULL)
@@ -41,7 +42,7 @@ char **conv_env_to_2darray(void)
 	while (rator)
 	{
 		temp[0] = _strcat(rator->data, "=");
-		temp[1] = environ_management(GET_VAL, rator->data, NULL);
+		temp[1] = environ_access_management(GET_VAL, rator->data, NULL);
 		arry[len] = _strcat(temp[0], temp[1]);
 		free(temp[0]);
 		free(temp[1]);

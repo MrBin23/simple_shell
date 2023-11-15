@@ -72,10 +72,44 @@ typedef enum global_cmd_s
 	SET_SHELL_NAME, INCREMENT_LINE_NUMBER, SET_2D, GET_2D
 } global_cmd_t;
 
+
 int a_toi(const char *str);
 void clear_entry(void *data);
 int del_entry(map_t *map, const char *key);
 void *free_command(void *data);
+char *_itoa(int num);
+int count_num_len(int num);
+int *move_from_list(list_t **my_list);
+char *_strcat(const char *str1, const char *str2);
+char *_strdup(const char *str);
+char *str_slice(const char *my_line, int start, int end);
+char *evaluate_env_var(char *environ_key);
+int set_val(obj_t *map, const char *key, const char *val);
+void sigint_handler(int sign);
+int count_string(char **str);
+char **trim_array_2d(char **str);
+char *get_cmd_path(char *cmd);
+int gethash_code(const char *key);
+char *get_val(obj_t *obj, const char *key);
+obj_t *init_mapt(void);
+int _fputs(int fd, const char *str);
+int fputs_num(int fd, int num);
+int _fprint(int fd, const char *format, ...);
+int fputs_num_help(int fd, int num);
+char *check_for_command(char *command, commandtype_t *type);
+cmd_t init_command(char **tokens);
+cmd_t *handle_command(const char *line);
+void exec_cmd(cmd_t *command);
+int main(int ac, char *av[]);
+void *feed_environ_var(**env);
+char **conv_env_to_2darray(void);
+void *state_var_global(global_cmd_t action, char **str);
+void environ_access_management(environ_action_t action,
+                const char *key, const char val);
+builtin_t built_in_management(builtin_cmd_t action, char *name,
+                int (*function)(cmd_t *cmd));
+void *_realloc(void *prev_buff, size_t prev_size, size_t new_size);
+
 
 **Ay structs**
 /**
@@ -115,5 +149,9 @@ char **_splits(const char *lines, const char *diam);
 char *_rem_whitespace(const char *lines);
 size_t _get_lenght_withnospace(const char *lines, size_t ends);
 size_t *_get_newline_withnospace(const char *lines, size_t ends);
+int exits_func(cmd_t *commd);
+int cd_help_func(const char *keys);
+int cd_help_func2(const char *paths);
+int changedir(cmd_t *commd);
 
 #endif
