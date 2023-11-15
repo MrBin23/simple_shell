@@ -1,12 +1,12 @@
 #include "shell.h"
 #include <stdlib.h>
 /**
- * add_to_list - addig new node to the linked list
+ * add_new_node - addig new node to the linked list
  *@lists: double pointer to the head of the list
- *@data: Ponter to the items that will be stored
+ *@datas: Ponter to the items that will be stored
  *Return: Pointer to the newly added node
  */
-list_t *add_new_node(list_t **lists, void *data)
+list_t *add_new_node(list_t **lists, void *datas)
 {
 	list_t *newnode = (list_t *)malloc(sizeof(list_t));
 	list_t *curr_node;
@@ -15,10 +15,10 @@ list_t *add_new_node(list_t **lists, void *data)
 	{
 		return (NULL);
 	}
-	newnode->data = data;
+	newnode->datas = datas;
 	newnode->next = NULL;
 
-	if(*lists == NULL)
+	if (*lists == NULL)
 	{
 		*lists = newnode;
 	}
