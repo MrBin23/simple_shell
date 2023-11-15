@@ -6,8 +6,7 @@
  */
 char *get_cmd_path(char *cmd)
 {
-	char *my_cmd, my_path;
-	char **2dpath, **rator;
+	char *my_cmd, *my_path, **2dpath, **rator;
 
 	struct stat st;
 
@@ -15,7 +14,7 @@ char *get_cmd_path(char *cmd)
 	{
 		return (_strdup(cmd));
 	}
-	my_path = environment_management(GET_VAL, "PATH", NULL);
+	my_path = environ_access_management(GET_VAL, "PATH", NULL);
 	if (!my_path)
 		return (_strdup(cmd));
 	rator = 2dpath = _split(path, ":");
@@ -28,10 +27,10 @@ char *get_cmd_path(char *cmd)
 		free(my_path);
 		if (!stat(my_cmd, &st))
 		{
-			_free_split(&2dpath);
+			free_split(&2dpath);
 			return (my_cmd);
 		}
-		_free_split(&2dpath);
+		free_split(&2dpath);
 		return (_strdup(cmd));
 	}
 }
@@ -54,10 +53,10 @@ int gethash_code(const char *key)
 }
 
 /**
- * get_value - retrieves the associated value with a given key
+ * get_val - retrieves the associated value with a given key
  * @obj: object containing key value pair
  * @key: to search for value
- * return: value associated with key if not found
+ * Return: value associated with key if not found
  */
 char *get_val(obj_t *obj, const char *key)
 {
@@ -72,7 +71,7 @@ char *get_val(obj_t *obj, const char *key)
 		enter = backt->data;
 		if (_strcmp(enter->key, key))
 			return (enter->value);
-		backet = backet->next;
+		backt = backt->next;
 	}
 	return (NULL);
 }

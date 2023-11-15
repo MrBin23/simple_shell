@@ -2,13 +2,14 @@
 /**
  * free_command - frees command
  * @data: free this data
+ * Return: void
  */
-void *free_command(voaid *data)
+void *free_command(void *data)
 {
 	cmd_t *command;
 
 	command = data;
-	_free_split(command->args);
+	free_split(command->args);
 	free(data);
 }
 
@@ -20,12 +21,12 @@ void *free_command(voaid *data)
  */
 char *check_for_command(char *command, commandtype_t *type)
 {
-	if (_builtin_management(GET_BUILTIN, command, NULL))
+	if (built_in_management(GET_BUILTIN, command, NULL))
 	{
 		*type = *BUILT_INS;
 		return (_strdup(command));
 	}
-	return (_get_command_from_path(command));
+	return (get_cmd_path(command));
 }
 
 /**
@@ -65,7 +66,7 @@ cmd_t *handle_command(const char *line)
 	char **tokens[2];
 	int rator;
 
-	cut_line = _trim_white_space(line);
+	cut_line = _rem_whitespace(line);
 	tokens[0] = _split(cut_line, " ");
 	free(cut_line);
 	if (!tokens[0])
@@ -78,7 +79,7 @@ cmd_t *handle_command(const char *line)
 	{
 		if (tokens[0][rator][0] == '$')
 		{
-			cmd_name = _evaluate_environment_variable(tokens[0][rator] + 1);
+			cmd_name = evaluate_env_var(tokens[0][rator] + 1);
 			free(tokens[0][rator]);
 			if (cmd_name)
 				tokens[0][rator] = cmd_name;
@@ -87,25 +88,25 @@ cmd_t *handle_command(const char *line)
 		}
 		rator++;
 	}
-	tokens[1] = _trim_2darray(tokens[0]);
-	_free_split(&tokens[0]);
-	return (_init_command(tokens[1]));
+	tokens[1] = trim_array_2d(tokens[0]);
+	free_split(&tokens[0]);
+	return (init_command(tokens[1]));
 }
 
 /**
  * exec_cmd - executes a command using the execve system call
  * @command: pointer to the cmd_t struct
  */
-void exec_cmd(cmd_t, *command)
+void exec_cmd(cmd_t *command)
 {
 	int error, ppid, state;
 
 	ppid = fork();
 	if (ppid < 0)
 	{
-		perror((char *)_global_name(GET_SHELL_NAME, NULL));
-		_status_management(UPDATE_STATUS, 1);
-		return ;
+		perror((char *)state_var_global(GET_SHELL_NAME, NULL));
+		status_management(UPDATE_STATUS, 1);
+		return;
 	}
 	if (!ppid)
 	{
@@ -113,22 +114,23 @@ void exec_cmd(cmd_t, *command)
 		error = errno;
 		if (errno == EACCES)
 		{
-			_fprint(2, "%s: %d: %s: permission denied/n", (char *)_global_name(GET_SHELL_NAME, NULL),
-					*((int *)_global_state(GET_SHELL_NAME, NULL)), command->name);
+			_fprint(2, "%s: %d: %s: permission denied/n",
+					(char *)state_var_global(GET_SHELL_NAME, NULL),
+					*((int *)state_var_global(GET_SHELL_NAME, NULL)), command->name);
 			error = 126;
 		}
 		else
 		{
-			perror(_global_state(GET_SHELL_NAME, NULL));
+			perror(state_var_global(GET_SHELL_NAME, NULL));
 		}
-		_free_command(command);
-		free(_global_state(GET_LINE, NULL));
-		_enviroment_management(CLEAR_ENV, NULL, NULL);
+		free_command(command);
+		free(state_var_global(GET_LINE, NULL));
+		environ_access_management(CLEAR_ENV, NULL, NULL);
 		_exit(error);
 	}
 	else
 	{
 		waitpid(ppid, &state, 0);
-		_status_management(UPDATE_STATUS, WEXISTATUS(state));
+		status_management(UPDATE_STATUS, WEXISTATUS(state));
 	}
 }
