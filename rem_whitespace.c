@@ -12,7 +12,7 @@ char *_rem_whitespace(const char *lines)
 	char *s;
 
 	l = 0;
-	r = _strlen(lines);
+	r = _stringlength(lines);
 	if (!r)
 	{
 		s = malloc(sizeof(char));
@@ -20,7 +20,7 @@ char *_rem_whitespace(const char *lines)
 		return (s);
 	}
 	r -= 1;
-	while (lines[l] == ' '||line[l] == '\t')
+	while (lines[l] == ' ' || lines[l] == '\t')
 		l++;
 	while (r > l && (lines[r] == ' ' || lines[r] == 'lt'))
 		r--;
@@ -81,7 +81,8 @@ size_t *_get_newline_withnospace(const char *lines, size_t ends)
 	beggin = 0;
 	space = 0;
 	indx = 0;
-	newlines = malloc(sizeof(char) * (_get_lenght_withnospace(lines, ends + 1) + 1));
+	newlines = malloc(sizeof(char) *
+			(_get_lenght_withnospace(lines, ends + 1) + 1));
 	if (!newlines)
 		return (NULL);
 	while (beggin <= ends)
@@ -102,5 +103,5 @@ size_t *_get_newline_withnospace(const char *lines, size_t ends)
 		beggin++;
 	}
 	newlines[indx] = 0;
-	return (newlines)
+	return (newlines);
 }
