@@ -13,7 +13,7 @@ int handle_error_parsing(char *lines)
 	{
 		return (0);
 	}
-	lenght = _strlen(lines);
+	lenght = _stringlenght(lines);
 	if (lines[0] == ';' || lines[0] == '|' || lines[lenght - 1] == '|' ||
 		lines[lenght - 1] == '>' || lines[lenght - 1] == '<')
 		return (2);
