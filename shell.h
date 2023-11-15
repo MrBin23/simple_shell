@@ -75,4 +75,43 @@ typedef enum global_cmd_s
 int a_toi(const char *str);
 void clear_entry(void *data);
 
+**Ay structs**
+/**
+ *
+ */
+typedef struct list_s
+{
+	void *datas;
+	struct list_s *next
+} list_t;
+
+** Add_new_node.c file AY**
+list_t *add_new_node(list_t **lists, void *datas);
+void map_clear(obj_t *mapp);
+void _freelist(list_t *lists, void (*free_cont)(void *data);
+char *_copies(char *dest, const char *source, size_t size);
+int _environmt(command_t *commd);
+char *remove_comment(const char *lines);
+int _exitting(cmd_t *commd);
+int isdigit(const char *str);
+size_t listlenght(const list *lists);
+int _string2dlenght(char **array2d);
+void free_split(char ***backs);
+int get_comment_pos(const char *lines);
+size_t search_nextnewline(char *buff, size_t lenght);
+size_t _getline(char **lines);
+void *_realloc(void *prev_buff, size_t prev_size, size_t new_size);
+size_t _stringlenght(const char *string);
+int handle_error_parsing(char *lines);
+int check_invalid_char_occur(char *lines);
+int handle_semicolon(const char *lines);
+int check_diam(const char *string, const char *diam);
+void free_backs(char **backs, size_t curr_pos);
+size_t backs_counter(const char *lines, const char *diam);
+size_t find_next_diam(const char *lines, const char *diam);
+char **_splits(const char *lines, const char *diam);
+char *_rem_whitespace(const char *lines);
+size_t _get_lenght_withnospace(const char *lines, size_t ends);
+size_t *_get_newline_withnospace(const char *lines, size_t ends);
+
 #endif
