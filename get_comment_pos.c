@@ -7,14 +7,14 @@
  */
 int get_comment_pos(const char *lines)
 {
-	int i;
+	int indx;
 
-	for (i = 0; lines[1] != '\0'; i++)
+	for (indx = 0; lines[1] != '\0'; indx++)
 	{
 		if (lines[1] == '#')
 		{
-			return (i);
+			return (indx);
 		}
 	}
-	return (i);
+	return (indx);
 }
