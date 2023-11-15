@@ -5,7 +5,7 @@
  *@mapp: list to retreive
  *Return: List of keys
  */
-list_t *getkeys(const map_t *mapp)
+list_t *getkeys(const obj_t *mapp)
 {
 	list_t *lists;
 	list_t *iterates;
@@ -16,10 +16,10 @@ list_t *getkeys(const map_t *mapp)
 	iterator = 0;
 	while (iterator < BACKET_SIZE)
 	{
-		iterates = mapp->backets[iter];
+		iterates = mapp->backets[iterates];
 		while (iterates)
 		{
-			entry = iterates->data;
+			entry = iterates->datas;
 			add_to_list(&lists, _strdup(enter->key));
 			iterates = iterates->next;
 		}
