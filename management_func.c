@@ -58,7 +58,7 @@ void environ_access_management(environ_action_t action,
 {
 	static obj_t *my_map;
 
-	if (action == INIT_ENV)
+	if (action == INIT_ENVIRON)
 		my_map = init_mapt();
 	else if (action == SET_ENTRY)
 		set_val(my_map, key, val);
@@ -68,7 +68,7 @@ void environ_access_management(environ_action_t action,
 		return (getkeys(my_map));
 	else if (action == CONV_TO_2D)
 		return (conv_env_to_2darray());
-	else if (action == CLEAR_ENV)
+	else if (action == CLEAR_ENVIRON)
 		clear_map(my_map);
 	else if (action == DEL_ENTRY)
 		del_entry(my_map, key);
