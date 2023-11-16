@@ -60,11 +60,11 @@ size_t backs_counter(const char *lines, const char *diam)
 	count = 0;
 	indx = 0;
 	before = 0;
-	if (!*line)
+	if (!*lines)
 		return (0);
 	while (lines[indx])
 	{
-		is_diam = check_diameter(lines + indx, diam);
+		is_diam = check_diam(lines + indx, diam);
 		if (is_diam)
 		{
 			if (is_diam == 2)
@@ -84,7 +84,7 @@ size_t backs_counter(const char *lines, const char *diam)
 			}
 		}
 		else
-		index++;
+		indx++;
 	}
 	return (count + 1);
 }
@@ -143,7 +143,7 @@ char **_splits(const char *lines, const char *diam)
 	backs = malloc(sizeof(char *) * (backs_len) + 1);
 	if (!backs)
 		return (NULL);
-	curr_lin_pos = 0;
+	curr_line_pos = 0;
 	backs_indx = 0;
 	while (backs_indx < backs_len)
 	{

@@ -10,9 +10,7 @@ int handle_error_parsing(char *lines)
 	size_t lenght;
 
 	if (!lines || !*lines)
-	{
 		return (0);
-	}
 	lenght = _stringlenght(lines);
 	if (lines[0] == ';' || lines[0] == '|' || lines[lenght - 1] == '|' ||
 		lines[lenght - 1] == '>' || lines[lenght - 1] == '<')
@@ -20,9 +18,9 @@ int handle_error_parsing(char *lines)
 	lenght = 0;
 	while (lines[lenght])
 	{
-		if (check_invalid_char_occur(lines + lenght)
+		if (check_invalid_char_occur(lines + lenght))
 				return (2);
-				lenght++;
+			lenght++;
 	}
 	return (0);
 }
@@ -45,13 +43,13 @@ int check_invalid_char_occur(char *lines)
 		iterates = 0;
 		iterates1 = 0;
 		while (lines[iterates1] && invalid_char[indx][iterates] &&
-			(invalid_char[indx][iterates] == line[iterates1] || line[iterates1] == ' '))
+			(invalid_char[indx][iterates] == lines[iterates1] || lines[iterates1] == ' '))
 		{
 			if (lines[iterates1] == ' ')
 				iterates1++;
 			else
 			{
-				iterates2++;
+				iterates1++;
 				iterates++;
 			}
 		}

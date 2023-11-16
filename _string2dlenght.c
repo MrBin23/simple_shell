@@ -11,14 +11,10 @@ int _string2dlenght(char **array2d)
 
 	lenght = 0;
 	if (!array2d)
-	{
 		return (0);
-	}
 	while (array2d[lenght])
-	{
 		lenght++;
-		return (lenght);
-	}
+	return (lenght);
 }
 /**
  * _stringcompare - function checks for isentical strings
@@ -53,7 +49,7 @@ size_t _stringlenght(const char *string)
 	size_t lenght;
 
 	lenght = 0;
-	while (string && s[lenght])
+	while (string && string[lenght])
 		lenght++;
 	return (lenght);
 }

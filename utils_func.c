@@ -5,13 +5,13 @@
  * @env: pointer to array of environ variable
  * Return: void
  */
-void *feed_environ_var(**env)
+void *feed_environ_var(char **env)
 {
 	char **new_entry;
 
 	while (env)
 	{
-		new_entry = _split(*env, "=");
+		new_entry = _splits(*env, "=");
 		environ_access_management(SET_ENTRY, new_entry[0], new_entry[1]);
 		free_split(&new_entry);
 		env++;
@@ -30,25 +30,25 @@ char **conv_env_to_2darray(void)
 	size_t len;
 
 	rator = my_key = environ_access_management(GET_KEYS, NULL, NULL);
-	len = _listlen(my_key);
+	len = listlenght(my_key);
 	arry = malloc(sizeof(char *) * (len + 1));
-	if (arry == NULL)
+	if (!arry)
 	{
-		free_list(my_list, free);
+		_freelist(my_key, free);
 		return (NULL);
 	}
 	arry[len] = NULL;
 	len = 0;
 	while (rator)
 	{
-		temp[0] = _strcat(rator->data, "=");
-		temp[1] = environ_access_management(GET_VAL, rator->data, NULL);
+		temp[0] = _strcat(rator->datas, "=");
+		temp[1] = environ_access_management(GET_VAL, rator->datas, NULL);
 		arry[len] = _strcat(temp[0], temp[1]);
 		free(temp[0]);
 		free(temp[1]);
 		rator = rator->next;
 		len++;
 	}
-	free_list(my_key, free);
+	_freelist(my_key, free);
 	return (arry);
 }

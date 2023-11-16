@@ -12,7 +12,7 @@ int exits_func(cmd_t *commd)
 
 	iterates = commd->args + 1;
 	lenght = _string2dlenght(iterates);
-	if (lenght > 0 && !isdigit(*iterates))
+	if (lenght > 0 && !_isdigit(*iterates))
 	{
 		_fprint(2, "%s: %d: exit: Wrong number: %s\n",
 			state_var_global(GET_SHELL_NAME, NULL),
@@ -22,10 +22,10 @@ int exits_func(cmd_t *commd)
 	}
 	else
 	{
-		environ_access_variable(CLEAR_ENVIRON, NULL, NULL);
+		environ_access_management(CLEAR_ENVIRON, NULL, NULL);
 		free(state_var_global(GET_LINE, NULL));
 		iterates = state_var_global(GET_2D, NULL);
-		free_split(&iterates)
+		free_split(&iterates);
 			if (!lenght)
 			{
 				free_command(commd);

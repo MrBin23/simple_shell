@@ -28,6 +28,6 @@ void *_realloc(void *prev_buff, size_t prev_size, size_t new_size)
 		rator++;
 	}
 	buff[rator] = 0;
-	free[prev_buff];
+	free(prev_buff);
 	return (buff);
 }

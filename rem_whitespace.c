@@ -1,4 +1,4 @@
-#include "shell.c"
+#include "shell.h"
 /**
  * _rem_whitespace - function returns newline
  *
@@ -12,7 +12,7 @@ char *_rem_whitespace(const char *lines)
 	char *s;
 
 	l = 0;
-	r = _stringlength(lines);
+	r = _stringlenght(lines);
 	if (!r)
 	{
 		s = malloc(sizeof(char));
@@ -22,7 +22,7 @@ char *_rem_whitespace(const char *lines)
 	r -= 1;
 	while (lines[l] == ' ' || lines[l] == '\t')
 		l++;
-	while (r > l && (lines[r] == ' ' || lines[r] == 'lt'))
+	while (r > l && (lines[r] == ' ' || lines[r] == '\t'))
 		r--;
 	if (l > r)
 	{
@@ -50,12 +50,12 @@ size_t _get_lenght_withnospace(const char *lines, size_t ends)
 	lenght = 0;
 	while (beggin < ends)
 	{
-		if ((line[beggin] == ' ' || line[beggin] == '\t') && !space)
+		if ((lines[beggin] == ' ' || lines[beggin] == '\t') && !space)
 		{
 			lenght++;
 			space = 1;
 		}
-		else if (line[beggin] != ' ' && line[beggin] != '\t')
+		else if (lines[beggin] != ' ' && lines[beggin] != '\t')
 		{
 			space = 0;
 			lenght++;

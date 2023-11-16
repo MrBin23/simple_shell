@@ -23,7 +23,7 @@ char *check_for_command(char *command, commandtype_t *type)
 {
 	if (built_in_management(GET_BUILTIN, command, NULL))
 	{
-		*type = *BUILT_INS;
+		*type = *BUILTINS;
 		return (_strdup(command));
 	}
 	return (get_cmd_path(command));
@@ -67,7 +67,7 @@ cmd_t *handle_command(const char *line)
 	int rator;
 
 	cut_line = _rem_whitespace(line);
-	tokens[0] = _split(cut_line, " ");
+	tokens[0] = _splits(cut_line, " ");
 	free(cut_line);
 	if (!tokens[0])
 	{
@@ -105,7 +105,7 @@ void exec_cmd(cmd_t *command)
 	if (ppid < 0)
 	{
 		perror((char *)state_var_global(GET_SHELL_NAME, NULL));
-		status_management(UPDATE_STATUS, 1);
+		status_management(MY_STATUS_UPDATE, 1);
 		return;
 	}
 	if (!ppid)

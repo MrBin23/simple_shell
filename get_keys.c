@@ -16,11 +16,11 @@ list_t *getkeys(const obj_t *mapp)
 	iterator = 0;
 	while (iterator < BACKET_SIZE)
 	{
-		iterates = mapp->backets[iterates];
+		iterates = mapp->backets[iterator];
 		while (iterates)
 		{
-			entry = iterates->datas;
-			add_to_list(&lists, _strdup(enter->key));
+			enter = iterates->datas;
+			add_new_node(&lists, _strdup(enter->key));
 			iterates = iterates->next;
 		}
 		iterator++;

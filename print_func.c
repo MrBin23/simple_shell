@@ -7,7 +7,7 @@
  */
 int _fputs(int fd, const char *str)
 {
-	return (write(fd, str, _strlen(str)));
+	return (write(fd, str, _stringlenght(str)));
 }
 
 /**
@@ -61,11 +61,11 @@ int _fprint(int fd, const char *format, ...)
 			if (is_cent)
 			{
 				if (format[indx] == 'd')
-					prints = prints + fput_num(fd, va_arg(my_args, int));
+					prints = prints + fputs_num(fd, va_arg(my_args, int));
 				else if (format[indx] == 's')
-					prints = prints + _fput(fd, va_arg(my_args, char));
+					prints += _fputs(fd, va_arg(my_args, *));
 				else
-					prints = prints + write(fd, format[indx - 1], 2);
+					prints +=  write(fd, format[indx - 1], 2);
 			}
 			else
 				prints = prints + write(fd, format + indx, 1);

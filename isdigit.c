@@ -1,11 +1,11 @@
 #include "shell.h"
 /**
- * isdigit - function checks for digit
+ * _isdigit - function checks for digit
  *
  *@str: pointer to string to convert
  * Return: 1 as digit, else return 0
  */
-int isdigit(const char *str)
+int _isdigit(const char *str)
 {
 	if (!str)
 	{
@@ -29,7 +29,7 @@ int isdigit(const char *str)
  *@lists: to the lenght of a linked list
  *Return: The lenght of a list
  */
-size_t listlenght(const list *lists)
+size_t listlenght(const list_t *lists)
 {
 	size_t lenght;
 

@@ -24,7 +24,7 @@ int status_management(status_cmd_t cmd_action, int new_status)
  */
 void *state_var_global(global_cmd_t action, char **str)
 {
-	static char *my_line, *shell_name, **2darray;
+	static char *my_line, *shell_name, **_darray;
 	static int line_num;
 
 	if (action == SET_LINE)
@@ -40,9 +40,9 @@ void *state_var_global(global_cmd_t action, char **str)
 	if (action == INCREMENT_LINE_NUMBER)
 		line_num++;
 	if (action == SET_2D)
-		2darray = *str;
+		_darray = str;
 	if (action == GET_2D)
-		return (2darray);
+		return (_darray);
 	return (NULL);
 }
 
@@ -53,8 +53,8 @@ void *state_var_global(global_cmd_t action, char **str)
  * @val: value
  * Return: null
  */
-void environ_access_management(environ_action_t action,
-		const char *key, const char val)
+void *environ_access_management(environ_action_t action,
+		const char *key, const char *val)
 {
 	static obj_t *my_map;
 
@@ -69,7 +69,7 @@ void environ_access_management(environ_action_t action,
 	else if (action == CONV_TO_2D)
 		return (conv_env_to_2darray());
 	else if (action == CLEAR_ENVIRON)
-		clear_map(my_map);
+		map_clear(my_map);
 	else if (action == DEL_ENTRY)
 		del_entry(my_map, key);
 	return (NULL);
@@ -86,23 +86,23 @@ builtin_t built_in_management(builtin_cmd_t action, char *name,
 		int (*function)(cmd_t *cmd))
 {
 	static int obj_size;
-	static builtin_t built[0];
+	static builtin_t built[10];
 	int rator;
 
 	if (action == GET_BUILTIN)
 	{
 		rator = 0;
-		while (rator < size)
+		while (rator < obj_size)
 		{
-			if (_strcmp(built[rator].name, name))
-				return (built[rator].functios);
+			if (_stringcompare(built[rator].name, name))
+				return (built[rator].function);
 			rator++;
 		}
 	}
 
 	if (action == SET_BUILTIN)
 	{
-		_copy(built[obj_size].name, name, _strlen(name));
+		_copies(built[obj_size].name, name, _stringlenght(name));
 		built[obj_size].function = function;
 		obj_size++;
 	}

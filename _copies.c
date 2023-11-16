@@ -14,7 +14,7 @@ char *_copies(char *dest, const char *source, size_t size)
 	iterates = 0;
 	while (iterates < size)
 	{
-		dest[iterates] = sources[iterates];
+		dest[iterates] = source[iterates];
 		iterates++;
 	}
 	dest[iterates] = 0;

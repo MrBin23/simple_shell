@@ -19,24 +19,27 @@ int handle_semicolon(const char *lines)
 	}
 	while (*iterator)
 	{
-		commd->type == NOT_FOUND)
+		commd = handle_command(*iterator);
+		if (commd->type == NOT_FOUND)
 		{
 			_fprint(2, "%s: %d: %s: not found\n",
 				(char *)state_var_global(GET_SHELL_NAME, NULL),
 				*((int *)state_var_global(GET_LINE_NUMBER, NULL)),
 				commd->name);
-			environ_access_management(MY_STATUS_UPDATE, 127);
+			status_management(MY_STATUS_UPDATE, 127);
 		}
 		else if (commd->type == EXTERNAL)
 			_handle_exec(commd);
 		else
 		{
 			state_var_global(SET_2D, colon_commd);
-			environ_access_management(MY_STATUS_UPDATE
-				built_in_management(GET_BUILTIN, commd->name, NULL)(commd));
+			environ_access_management(MY_STATUS_UPDATE,
+				built_in_management(
+					GET_BUILTIN,
+					commd->name, NULL)(commd));
 		}
 		arg_len = _string2dlenght(commd->args);
-		enviroment_access_management(SET_ENTRY, "_", commd->args[arg_len - 1]);
+		environ_access_management(SET_ENTRY, "_", commd->args[arg_len - 1]);
 		free_command(commd);
 		iterator++;
 	}
@@ -49,9 +52,9 @@ int handle_semicolon(const char *lines)
  *@commd: command that will be executed
  *Return: Nothing
  */
-void _handle_exec(command_t *commd)
+void _handle_exec(cmd_t *commd)
 {
-	if (access(commd->name, F_OK | X_OK != -1)
+	if (access(commd->name, F_OK | X_OK) != -1)
 		exec_cmd(commd);
 	else
 	{

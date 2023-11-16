@@ -8,9 +8,9 @@
 int cd_help_func(const char *keys)
 {
 	char *str;
-	char bufer[300];
+	char buffer[200];
 
-	getcwd(buffer, 300);
+	getcwd(buffer, 200);
 	str = environ_access_management(GET_VAL, keys, NULL);
 	if (chdir(str) == -1)
 	{
@@ -18,7 +18,7 @@ int cd_help_func(const char *keys)
 		return (errno);
 	}
 	environ_access_management(SET_ENTRY, "OLDPWD", buffer);
-	fre(str);
+	free(str);
 	return (0);
 }
 /**
@@ -55,10 +55,10 @@ int changedir(cmd_t *commd)
 	{
 		if (_stringcompare("-", commd->args[1]))
 			return (cd_help_func("OLDPWD"));
-		else if (_stringcompare("~", commd->args[1]));
+		else if (_stringcompare("~", commd->args[1]))
 		return (cd_help_func2("HOME"));
 		else
-			return (cd_help_funct2(commd->args[1]));
+			return (cd_help_func2(commd->args[1]));
 	}
 	else if (!lenght)
 		return (cd_help_func("HOME"));

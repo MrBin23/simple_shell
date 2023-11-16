@@ -10,27 +10,27 @@ int main(int ac, char *av[])
 	char *my_line;
 	char *zero_line;
 
-	void(ac);
-	signal(SIGINT, _handle_sigint);
+	(void)ac;
+	signal(SIGINT, sigint_handler);
 	environ_access_management(INIT_ENVIRON, NULL, NULL);
 	feed_environ_var(__environ);
-	built_in_management(SET_BUILTIN, "exit", __exit);
-	built_in_management(SET_BUILTIN, "env", _env);
-	built_in_management(SET_BUILTIN, "setenv", _setenv);
-	built_in_management(SET_BUILTIN, "unsetenv", _unsetenv);
-	built_in_management(SET_BUILTIN, "cd", _cd);
+	built_in_management(SET_BUILTIN, "exit", _exitting);
+	built_in_management(SET_BUILTIN, "env", _environmt);
+	built_in_management(SET_BUILTIN, "setenv", setenviron);
+	built_in_management(SET_BUILTIN, "unsetenv", _unsetenviron);
+	built_in_management(SET_BUILTIN, "cd", changedir);
 	state_var_global(SET_SHELL_NAME, &av[0]);
 
 	while (1)
 	{
-		_prompt();
+		prompts();
 		_getline(&my_line);
 		if (!my_line)
 		{
 			free(my_line);
 			break;
 		}
-		zero_line = _rem_whitespace(line);
+		zero_line = _rem_whitespace(my_line);
 		free(my_line);
 		my_line = zero_line;
 		state_var_global(SET_LINE, &my_line);
@@ -38,6 +38,6 @@ int main(int ac, char *av[])
 		handle_semicolon(my_line);
 		free(my_line);
 	}
-	enviiron_access_management(CLEAR_ENVIRON, NULL, NULL);
+	environ_access_management(CLEAR_ENVIRON, NULL, NULL);
 	return (status_management(GET_STATUS, 0));
 }

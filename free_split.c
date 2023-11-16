@@ -2,19 +2,19 @@
 /**
  * free_split - frees allocted memory to bucket
  *
- *@backs: what will be freed
+ *@backets: what will be freed
  *Return: void
  */
-void free_split(char ***backs)
+void free_split(char ***backets)
 {
 	char **head;
 
-	head = *backs;
+	head = *backets;
 	while (*head)
 	{
 		free(*head);
 		head++;
 	}
-	free(*backs);
+	free(*backets);
 	*backs = NULL;
 }

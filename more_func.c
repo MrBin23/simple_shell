@@ -6,7 +6,7 @@
  * @val: entry value
  * Return: 0 or 1 on success
  */
-int set_val(obj_t *map, const char *key, const char *val)
+int set_val(obj_t *map, const char *key, const char *value)
 {
 	int indx_backet;
 	enter_t *enter;
@@ -17,10 +17,10 @@ int set_val(obj_t *map, const char *key, const char *val)
 	while (rator)
 	{
 		enter = rator->datas;
-		if (_strcmp(enter->key, key))
+		if (_stringcompare(enter->key, key))
 		{
-			free(enter->val);
-			enter->val = _strdup(val);
+			free(enter->value);
+			enter->value = _strdup(value);
 			return (1);
 		}
 
@@ -30,8 +30,8 @@ int set_val(obj_t *map, const char *key, const char *val)
 	if (!enter)
 		return (0);
 	enter->key = _strdup(key);
-	enter->val = _strdup(val);
-	add_to_list(&map->backets[indx_backet], enter);
+	enter->val = _strdup(value);
+	add_new_node(&map->backets[indx_backet], enter);
 	return (1);
 }
 

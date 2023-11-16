@@ -11,7 +11,7 @@ list_t *add_new_node(list_t **lists, void *datas)
 	list_t *newnode = (list_t *)malloc(sizeof(list_t));
 	list_t *curr_node;
 
-	if (new_node == NULL)
+	if (newnode == NULL)
 	{
 		return (NULL);
 	}
@@ -29,7 +29,7 @@ list_t *add_new_node(list_t **lists, void *datas)
 		{
 			curr_node = curr_node->next;
 		}
-		curr_node->next = new_node;
+		curr_node->next = newnode;
 	}
 	return (newnode);
 }

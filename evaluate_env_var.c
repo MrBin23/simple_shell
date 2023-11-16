@@ -9,12 +9,12 @@ char *evaluate_env_var(char *environ_key)
 	int num;
 	char *val;
 
-	if (_strcmp(environ_key, "?"))
+	if (_stringcompare(environ_key, "?"))
 	{
 		num = status_management(GET_STATUS, 0);
 		return (_itoa(num));
 	}
-	if (_strcmp(environ_key, "$"))
+	if (_stringcompare(environ_key, "$"))
 	{
 		return(_itoa(getpid()));
 	}
