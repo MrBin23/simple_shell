@@ -38,6 +38,6 @@ int main(int ac, char *av[])
 		handle_semicolon(my_line);
 		free(my_line);
 	}
-	environ_access_management(CLEAR_ENV, NULL, NULL);
+	enviiron_access_management(CLEAR_ENVIRON, NULL, NULL);
 	return (status_management(GET_STATUS, 0));
 }
