@@ -83,11 +83,20 @@ typedef enum builtin_cmd_s
  * @datas: content of  a linked list
  * @next: the next node
  */
+<<<<<<< HEAD
 typedef struct list_s
 {
         void *datas;
         struct list_s *next;
 } list_t;
+=======
+typedef enum commandtype_s
+{
+	BUILT_INS,
+	EXTERNAL,
+	NOT_FOUND
+} commandtype_t;
+>>>>>>> 0d0915ed135ffacada8f5bcfb4ca773dbbf5ebdd
 
 /**
  * struct obj_s - defines struct for has table
@@ -97,6 +106,17 @@ typedef struct obj_s
 {
 	list_t *backets[BACKET_SIZE];
 } obj_t;
+
+/**
+ * struct list_s - node of linked list
+ * @datas: stores nodes
+ * @next; next node
+ */
+typedef struct list_s
+{
+	void *datas;
+	struct list_s *next;
+} list_t;
 
 /**
  * struct builtin_e - contains number of functions to be
@@ -169,7 +189,11 @@ cmd_t init_command(char **tokens);
 cmd_t *handle_command(const char *line);
 void exec_cmd(cmd_t *command);
 int main(int ac, char *av[]);
+<<<<<<< HEAD
 void *feed_environ_var(char **env);
+=======
+void feed_environ_var(char **env);
+>>>>>>> 0d0915ed135ffacada8f5bcfb4ca773dbbf5ebdd
 char **conv_env_to_2darray(void);
 void *state_var_global(global_cmd_t action, char **str);
 void *environ_access_management(environ_action_t action,
@@ -177,7 +201,12 @@ void *environ_access_management(environ_action_t action,
 builtin_t built_in_management(builtin_cmd_t action, char *name,
 		int (*function)(cmd_t *cmd));
 void *_realloc(void *prev_buff, size_t prev_size, size_t new_size);
+<<<<<<< HEAD
 int status_management(status_cmd_t cmd_action, int new_status);
+=======
+
+
+>>>>>>> 0d0915ed135ffacada8f5bcfb4ca773dbbf5ebdd
 
 /** Add_new_node.c file AY**/
 list_t *add_new_node(list_t **lists, void *datas);
