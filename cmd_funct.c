@@ -125,7 +125,7 @@ void exec_cmd(cmd_t *command)
 		}
 		free_command(command);
 		free(state_var_global(GET_LINE, NULL));
-		environ_access_management(CLEAR_ENV, NULL, NULL);
+		environ_access_management(CLEAR_ENVIRON, NULL, NULL);
 		_exit(error);
 	}
 	else
