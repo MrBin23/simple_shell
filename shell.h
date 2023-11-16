@@ -189,9 +189,7 @@ cmd_t init_command(char **tokens);
 cmd_t *handle_command(const char *line);
 void exec_cmd(cmd_t *command);
 int main(int ac, char *av[]);
-<<<<<<< HEAD
 void *feed_environ_var(char **env);
-=======
 void feed_environ_var(char **env);
 >>>>>>> 0d0915ed135ffacada8f5bcfb4ca773dbbf5ebdd
 char **conv_env_to_2darray(void);
@@ -201,12 +199,7 @@ void *environ_access_management(environ_action_t action,
 builtin_t built_in_management(builtin_cmd_t action, char *name,
 		int (*function)(cmd_t *cmd));
 void *_realloc(void *prev_buff, size_t prev_size, size_t new_size);
-<<<<<<< HEAD
 int status_management(status_cmd_t cmd_action, int new_status);
-=======
-
-
->>>>>>> 0d0915ed135ffacada8f5bcfb4ca773dbbf5ebdd
 
 /** Add_new_node.c file AY**/
 list_t *add_new_node(list_t **lists, void *datas);
