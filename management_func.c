@@ -20,11 +20,11 @@ int status_management(status_cmd_t cmd_action, int new_status)
  * state_var_global - holds variables used in difreent places
  * @action: the action to perform on the global state
  * @str: pointer to a pointer ro a char, use dto pass or recieve data
+ * Return: void
  */
 void *state_var_global(global_cmd_t action, char **str)
 {
-	static char *my_line, *shell_name;
-	static char **2darray;
+	static char *my_line, *shell_name, **2darray;
 	static int line_num;
 
 	if (action == SET_LINE)
@@ -50,26 +50,28 @@ void *state_var_global(global_cmd_t action, char **str)
  * environ_acces_var - allows global variable in programne
  * @action: applied to env
  * @key: used to add and recieve data
+ * @val: value
  * Return: null
  */
-void environ_access_management(environ_action_t action, const char *key, const char val)
+void environ_access_management(environ_action_t action,
+		const char *key, const char val)
 {
 	static obj_t *my_map;
 
 	if (action == INIT_ENV)
-		my_map = _init_map();
+		my_map = init_mapt();
 	else if (action == SET_ENTRY)
-		_set_value(my_map, key, val);
+		set_val(my_map, key, val);
 	else if (action == GET_VAL)
-		return (_strdup(_get_value(my_map, key)));
+		return (_strdup(get_val(my_map, key)));
 	else if (action == GET_KEYS)
-		return (_get_keys(my_map));
+		return (getkeys(my_map));
 	else if (action == CONV_TO_2D)
-		return (_conv_env_into_2d_array());
+		return (conv_env_to_2darray());
 	else if (action == CLEAR_ENV)
-		_clear_map(my_map);
+		clear_map(my_map);
 	else if (action == DEL_ENTRY)
-		_delete_entry(my_map, key);
+		del_entry(my_map, key);
 	return (NULL);
 }
 

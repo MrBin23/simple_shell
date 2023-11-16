@@ -12,7 +12,7 @@ char *_strcat(const char *str1, const char *str2)
 
 	len1 = _strlen(str1);
 	len2 = _strlen(str2);
-	new_str = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	new_str = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (new_str == NULL)
 		return (NULL);
 	rator = 0;
@@ -41,7 +41,7 @@ char *_strdup(const char *str)
 	char *new_str;
 
 	len = _strlen(str);
-	new_str = (char *)malloc(sizeof(char) * (length + 1));
+	new_str = malloc(sizeof(char) * (length + 1));
 	if (new_str == NULL)
 		return (NULL);
 	new_str[len] = 0;
@@ -56,7 +56,7 @@ char *_strdup(const char *str)
 }
 
 /**
- * strslice - creates a new string slice from the specified input string
+ * str_slice - creates a new string slice from the specified input string
  * @my_line: line to be sliced
  * @start: starting index of sli
  * @end: end index of sli
@@ -72,7 +72,7 @@ char *str_slice(const char *my_line, int start, int end)
 	length = _strlen(my_line);
 	if (length < end || end < 0)
 		end = length;
-	sli = (char *)malloc(sizeof(char) * (end - start + 1));
+	sli = malloc(sizeof(char) * (end - start + 1));
 	rator = 0;
 
 	while (start + rator < end)

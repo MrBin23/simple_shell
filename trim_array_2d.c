@@ -20,7 +20,7 @@ int count_string(char **str)
 /**
  * trim_array_2d - trims an array of string, and returns an empty string
  * @str: input array of string
- * return: dynamically allocated array of string with removed empty string
+ * Return: dynamically allocated array of string with removed empty string
  */
 char **trim_array_2d(char **str)
 {

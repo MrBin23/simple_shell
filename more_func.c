@@ -45,6 +45,6 @@ void sigint_handler(int sign)
 	fflush(stdin);
 	if (isatty(STDIN_FILENO))
 	{
-		_fprint(1, "\n%s> ", _global_states(GET_SHELL_NAME, NULL));
+		_fprint(1, "\n%s> ", state_var_global(GET_SHELL_NAME, NULL));
 	}
 }
