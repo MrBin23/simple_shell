@@ -43,7 +43,10 @@ typedef enum builtin_cmd_s
 } builtin_cmd_t;
 
 /**
- *
+ * struct commandtype_s - type of a command
+ * @BUILT_INS: means command is built in
+ * @EXTERNAL: an external command
+ * @NOT_FOUND: command not found 
  */
 typedef struct commandtype_s
 {
@@ -51,6 +54,8 @@ typedef struct commandtype_s
 } commandtype_t;
 
 /**
+ * struct obj_e - defines struct for has table
+ * @backets: array of linked list
  */
 typedef struct obj_s
 {
@@ -58,6 +63,9 @@ typedef struct obj_s
 } obj_t;
 
 /**
+ * enum status_cmd_s - action on status state management
+ * @GET_STATUS: retrieves status code
+ * @MY_STATUS_UPDATE: update status code
  */
 typedef enum status_cmd_s
 {
@@ -65,6 +73,9 @@ typedef enum status_cmd_s
 } status_cmd_t;
 
 /**
+ * enum global_cmd_s - action on global state var
+ * @GET_LINE: gets a line
+ * @GET_LINE_NUMBER: gets current line number
  */
 typedef enum global_cmd_s
 {
@@ -72,7 +83,7 @@ typedef enum global_cmd_s
 	SET_SHELL_NAME, INCREMENT_LINE_NUMBER, SET_2D, GET_2D
 } global_cmd_t;
 
-
+/**Betvic prototype**/
 int a_toi(const char *str);
 void clear_entry(void *data);
 int del_entry(map_t *map, const char *key);
