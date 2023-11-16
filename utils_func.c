@@ -5,11 +5,11 @@
  * @env: pointer to array of environ variable
  * Return: void
  */
-void *feed_environ_var(**env)
+void feed_environ_var(char **env)
 {
 	char **new_entry;
 
-	while (env)
+	while (*env)
 	{
 		new_entry = _split(*env, "=");
 		environ_access_management(SET_ENTRY, new_entry[0], new_entry[1]);

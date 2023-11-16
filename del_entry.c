@@ -5,7 +5,7 @@
  * @key: key of entry to be deleted
  * Return: 0 if entry was deleted
  */
-int del_entry(map_t *map, const char *key)
+int del_entry(obj_t *map, const char *key)
 {
 	list_t *my_list, *temp;
 	int ret_ind;

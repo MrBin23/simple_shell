@@ -73,9 +73,11 @@ typedef enum builtin_cmd_s
  * @EXTERNAL: an external command
  * @NOT_FOUND: command not found
  */
-typedef struct commandtype_s
+typedef enum commandtype_s
 {
-	BUILT_INS, EXTERNAL, NOT_FOUND
+	BUILT_INS,
+	EXTERNAL,
+	NOT_FOUND
 } commandtype_t;
 
 /**
@@ -86,6 +88,17 @@ typedef struct obj_s
 {
 	list_t *backets[BACKET_SIZE];
 } obj_t;
+
+/**
+ * struct list_s - node of linked list
+ * @datas: stores nodes
+ * @next; next node
+ */
+typedef struct list_s
+{
+	void *datas;
+	struct list_s *next;
+} list_t;
 
 /**
  * struct builtin_e - contains number of functions to be
@@ -132,7 +145,7 @@ typedef int (*builtins_t)(cmd_t *);
 /**Betvic prototype**/
 int a_toi(const char *str);
 void clear_entry(void *datas);
-int del_entry(map_t *map, const char *key);
+int del_entry(obj_t *map, const char *key);
 void *free_command(void *datas);
 char *_itoa(int num);
 int count_num_len(int num);
@@ -158,7 +171,7 @@ cmd_t init_command(char **tokens);
 cmd_t *handle_command(const char *line);
 void exec_cmd(cmd_t *command);
 int main(int ac, char *av[]);
-void *feed_environ_var(**env);
+void feed_environ_var(char **env);
 char **conv_env_to_2darray(void);
 void *state_var_global(global_cmd_t action, char **str);
 void environ_access_management(environ_action_t action,
@@ -168,24 +181,13 @@ builtin_t built_in_management(builtin_cmd_t action, char *name,
 void *_realloc(void *prev_buff, size_t prev_size, size_t new_size);
 
 
-/**Ay structs**/
-/**
- * struct list_s - nodes of a linked list
- * @datas: content of  a linked list
- * @next: the next node
- */
-typedef struct list_s
-{
-	void *datas;
-	struct list_s *next
-} list_t;
 
 /** Add_new_node.c file AY**/
 list_t *add_new_node(list_t **lists, void *datas);
 void map_clear(obj_t *mapp);
 void _freelist(list_t *lists, void (*free_cont)(void *datas);
 char *_copies(char *dest, const char *source, size_t size);
-int _environmt(command_t *commd);
+int _environmt(cmd_t *commd);
 char *remove_comment(const char *lines);
 int _exitting(cmd_t *commd);
 int isdigit(const char *str);
