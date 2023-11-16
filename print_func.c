@@ -44,10 +44,10 @@ int fputs_num(int fd, int num)
  */
 int _fprint(int fd, const char *format, ...)
 {
-	va_list args;
+	va_list my_args;
 	int indx, prints, is_cent;
 
-	va_start(args, format);
+	va_start(my_args, format);
 	indx = 0;
 	prints = 0;
 	is_cent = 0;
@@ -61,9 +61,9 @@ int _fprint(int fd, const char *format, ...)
 			if (is_cent)
 			{
 				if (format[indx] == 'd')
-					prints = prints + fput_num(fd, va_arg(args, int));
+					prints = prints + fput_num(fd, va_arg(my_args, int));
 				else if (format[indx] == 's')
-					prints = prints + _fput(fd, va_arg(args, char));
+					prints = prints + _fput(fd, va_arg(my_args, char));
 				else
 					prints = prints + write(fd, format[indx - 1], 2);
 			}
@@ -73,7 +73,7 @@ int _fprint(int fd, const char *format, ...)
 		}
 		indx++;
 	}
-	va_end(args);
+	va_end(my_args);
 	return (prints);
 }
 
