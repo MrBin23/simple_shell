@@ -26,6 +26,16 @@ typedef struct enter_s
 	char *key;
 } enter_t;
 
+/**
+ * enum environ_action_s - action on environment global
+ * @GET_VAL: gets value from environment
+ * @GET_KEYS: gets keys saved in enviroment var
+ * @INIT_ENVIRON: initialises environ variable
+ * @SET_ENTRY: add entry to environ variable
+ * @DEL_ENTRY: deletes entry from environ variable
+ * @CLEAR_ENVIRON: frees environ
+ * @CONV_TO_2D: returns 2d arrays
+ */
 typedef enum environ_action_s
 {
 	GET_VAL, GET_KEYS, INIT_ENVIRON,
@@ -47,6 +57,9 @@ typedef struct cmd_s
 } cmd_t;
 
 /**
+ * enum builtin_cmd_s - buitin commands and actions
+ * @GET_BUILTIN: get builtin commands
+ * @SET_BUILTIN: set builtin commands
  */
 typedef enum builtin_cmd_s
 {
