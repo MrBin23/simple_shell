@@ -41,7 +41,7 @@ typedef enum environ_action_s
  */
 typedef struct cmd_s
 {
-	char **arguments;
+	char **args;
 	char *name;
 	commandtype_t type;
 } cmd_t;
