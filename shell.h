@@ -1,8 +1,20 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#define <stdio.h>
+#define <errno.h>
+#define <unistd.h>
+#define <signal.h>
+#define <dirent.h>
+#define <sys/types.h>
+#define <stdlib.h>
+#define <sys/wait.h>
+#define <stdarg.h>
+#define <sys/stat.h>
+
 #define BUFF_SIZE 1024
 #define BACKET_SIZE 64
+
 /**
  * struct enter_s - holds value and key of hash table
  * @value: key data
@@ -29,7 +41,7 @@ typedef enum environ_action_s
  */
 typedef struct cmd_s
 {
-	char **args;
+	char **arguments;
 	char *name;
 	commandtype_t type;
 } cmd_t;
@@ -63,6 +75,18 @@ typedef struct obj_s
 } obj_t;
 
 /**
+ * struct builtin_e - contains number of functions to be 
+ * executed and builtins
+ * @name: buitin name
+ * @function: buitin function
+ */
+typedef struct builtin_e
+{
+	char name[30];
+	int (*function)(cmd_t *command);
+} builtin_t;
+
+/**
  * enum status_cmd_s - action on status state management
  * @GET_STATUS: retrieves status code
  * @MY_STATUS_UPDATE: update status code
@@ -82,6 +106,9 @@ typedef enum global_cmd_s
 	GET_LINE, GET_LINE_NUMBER, GET_SHELL_NAME, SET_LINE,
 	SET_SHELL_NAME, INCREMENT_LINE_NUMBER, SET_2D, GET_2D
 } global_cmd_t;
+
+typedef int (*builtins_t)(cmd_t *);
+
 
 /**Betvic prototype**/
 int a_toi(const char *str);
