@@ -11,13 +11,13 @@ char *evaluate_env_var(char *environ_key)
 
 	if (_strcmp(environ_key, "?"))
 	{
-		num = _status_management(GET_STATUS, 0);
+		num = status_management(GET_STATUS, 0);
 		return (_itoa(num));
 	}
 	if (_strcmp(environ_key, "$"))
 	{
 		return(_itoa(getpid()));
 	}
-	val = _environment_management(GET_VALUE, environ_key, NULL);
+	val = environ_access_management(GET_VAL, environ_key, NULL);
 	return (val);
 }
