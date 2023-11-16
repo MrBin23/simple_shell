@@ -1,16 +1,16 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#define <stdio.h>
-#define <errno.h>
-#define <unistd.h>
-#define <signal.h>
-#define <dirent.h>
-#define <sys/types.h>
-#define <stdlib.h>
-#define <sys/wait.h>
-#define <stdarg.h>
-#define <sys/stat.h>
+#include <stdio.h>
+#include <errno.h>
+#include <unistd.h>
+#include <signal.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <stdarg.h>
+#include <sys/stat.h>
 
 #define BUFF_SIZE 1024
 #define BACKET_SIZE 64
@@ -71,7 +71,7 @@ typedef enum builtin_cmd_s
  * struct commandtype_s - type of a command
  * @BUILT_INS: means command is built in
  * @EXTERNAL: an external command
- * @NOT_FOUND: command not found 
+ * @NOT_FOUND: command not found
  */
 typedef struct commandtype_s
 {
@@ -79,7 +79,7 @@ typedef struct commandtype_s
 } commandtype_t;
 
 /**
- * struct obj_e - defines struct for has table
+ * struct obj_s - defines struct for has table
  * @backets: array of linked list
  */
 typedef struct obj_s
@@ -88,7 +88,7 @@ typedef struct obj_s
 } obj_t;
 
 /**
- * struct builtin_e - contains number of functions to be 
+ * struct builtin_e - contains number of functions to be
  * executed and builtins
  * @name: buitin name
  * @function: buitin function
@@ -113,6 +113,12 @@ typedef enum status_cmd_s
  * enum global_cmd_s - action on global state var
  * @GET_LINE: gets a line
  * @GET_LINE_NUMBER: gets current line number
+ * @GET_SHELL_NAME: gets shell name
+ * @SET_LINE: allow to set line
+ * @SET_SHELL_NAME: allows to set shell name
+ * @INCREMENT_LINE_NUMBER: increment number by one
+ * @SET_2D: sets 2d array
+ * @GET_2D: gets 2d array
  */
 typedef enum global_cmd_s
 {
@@ -125,9 +131,9 @@ typedef int (*builtins_t)(cmd_t *);
 
 /**Betvic prototype**/
 int a_toi(const char *str);
-void clear_entry(void *data);
+void clear_entry(void *datas);
 int del_entry(map_t *map, const char *key);
-void *free_command(void *data);
+void *free_command(void *datas);
 char *_itoa(int num);
 int count_num_len(int num);
 int *move_from_list(list_t **my_list);
@@ -156,15 +162,17 @@ void *feed_environ_var(**env);
 char **conv_env_to_2darray(void);
 void *state_var_global(global_cmd_t action, char **str);
 void environ_access_management(environ_action_t action,
-                const char *key, const char val);
+		const char *key, const char val);
 builtin_t built_in_management(builtin_cmd_t action, char *name,
-                int (*function)(cmd_t *cmd));
+		int (*function)(cmd_t *cmd));
 void *_realloc(void *prev_buff, size_t prev_size, size_t new_size);
 
 
-**Ay structs**
+/**Ay structs**/
 /**
- *
+ * struct list_s - nodes of a linked list
+ * @datas: content of  a linked list
+ * @next: the next node
  */
 typedef struct list_s
 {
@@ -172,10 +180,10 @@ typedef struct list_s
 	struct list_s *next
 } list_t;
 
-** Add_new_node.c file AY**
+/** Add_new_node.c file AY**/
 list_t *add_new_node(list_t **lists, void *datas);
 void map_clear(obj_t *mapp);
-void _freelist(list_t *lists, void (*free_cont)(void *data);
+void _freelist(list_t *lists, void (*free_cont)(void *datas);
 char *_copies(char *dest, const char *source, size_t size);
 int _environmt(command_t *commd);
 char *remove_comment(const char *lines);

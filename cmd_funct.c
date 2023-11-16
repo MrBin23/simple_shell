@@ -4,13 +4,13 @@
  * @data: free this data
  * Return: void
  */
-void *free_command(void *data)
+void *free_command(void *datas)
 {
 	cmd_t *command;
 
-	command = data;
+	command = datas;
 	free_split(command->args);
-	free(data);
+	free(datas);
 }
 
 /**

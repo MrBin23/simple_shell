@@ -67,7 +67,7 @@ int count_num_len(int num)
 int *move_from_list(list_t **my_list)
 {
 	list_t *node_moved = *my_list;
-	void *removed_data = removed_data->data;
+	void *removed_data = removed_data->datas;
 
 	if (!my_list && *my_list == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
  *@free_cont: ponter to function usedto free node
  *Return: void
  */
-void _freelist(list_t *lists, void (*free_cont)(void *data))
+void _freelist(list_t *lists, void (*free_cont)(void *datas))
 {
 	list_t *curr = lists;
 	list_t *next;
@@ -16,7 +16,7 @@ void _freelist(list_t *lists, void (*free_cont)(void *data))
 		next = curr->next;
 		if (free_cont != NULL)
 		{
-			free_cont(curr->data);
+			free_cont(curr->datas);
 		}
 		free(curr);
 		curr = next;

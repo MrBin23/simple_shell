@@ -13,28 +13,28 @@ int del_entry(map_t *map, const char *key)
 
 	ret_ind = gethash_code(key);
 	my_list = map->backets[ret_ind];
-	if (!list)
+	if (!my_list)
 		return (0);
-	my_entry = list->data;
+	my_entry = my_list->datas;
 	if (_strcmp(my_entry->key, key))
 	{
-		map->backets[ret_ind] = list->next;
-		clear_entry(list->data);
-		free(list);
+		map->backets[ret_ind] = my_list->next;
+		clear_entry(my_list->datas);
+		free(my_list);
 		return (0);
 	}
-	while (list->next)
+	while (my_list->next)
 	{
-		my_entry = list->next->data;
+		my_entry = my_list->next->datas;
 		if (_strcmp(my_entry->key, key))
 		{
-			temp = list->next;
-			list->next = list->next->next;
-			clear_entry(temp->data);
+			temp = my_list->next;
+			my_list->next = my_list->next->next;
+			clear_entry(temp->datas);
 			free(temp);
 			break;
 		}
-		list = list->next;
+		my_list = my_list->next;
 	}
 	return (0);
 }

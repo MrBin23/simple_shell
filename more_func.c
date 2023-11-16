@@ -16,7 +16,7 @@ int set_val(obj_t *map, const char *key, const char *val)
 	rator = map->backets[indx_backet];
 	while (rator)
 	{
-		enter = rator->data;
+		enter = rator->datas;
 		if (_strcmp(enter->key, key))
 		{
 			free(enter->val);

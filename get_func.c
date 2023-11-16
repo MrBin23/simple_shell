@@ -68,7 +68,7 @@ char *get_val(obj_t *obj, const char *key)
 	backt = obj->backets[indx_backt];
 	while (backt)
 	{
-		enter = backt->data;
+		enter = backt->datas;
 		if (_strcmp(enter->key, key))
 			return (enter->value);
 		backt = backt->next;
