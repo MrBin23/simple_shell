@@ -6,10 +6,10 @@
  */
 void free_command(void *datas)
 {
-	cmd_t *command;
+	cmd_t *commd;
 
-	command = datas;
-	free_split(&command->args);
+	commd = datas;
+	free_split(&commd->args);
 	free(datas);
 }
 
@@ -36,23 +36,23 @@ char *check_for_command(char *command, commandtype_t *type)
  */
 cmd_t *init_command(char **tokens)
 {
-	cmd_t *cmd;
+	cmd_t *command;
 	struct stat st;
 	char *scmd;
 
-	cmd = malloc(sizeof(cmd_t));
-	if (!cmd)
+	command = malloc(sizeof(cmd_t));
+	if (!command)
 		return (NULL);
-	cmd->type = NOT_FOUND;
-	scmd = check_for_command(tokens[0], &cmd->type);
+	command->type = NOT_FOUND;
+	scmd = check_for_command(tokens[0], &command->type);
 	free(tokens[0]);
 	tokens[0] = scmd;
-	if (cmd->type == NOT_FOUND && (tokens[0][0] == '.' || tokens[0][0]
+	if (command->type == NOT_FOUND && (tokens[0][0] == '.' || tokens[0][0]
 				== '/') && !stat(tokens[0], &st))
-		cmd->type = EXTERNAL;
-	cmd->args = tokens;
-	cmd->name = tokens[0];
-	return (cmd);
+		command->type = EXTERNAL;
+	command->args = tokens;
+	command->name = tokens[0];
+	return (command);
 }
 
 /**

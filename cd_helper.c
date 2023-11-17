@@ -5,13 +5,13 @@
  *@keys: Environment variable
  *Return: Always sucess
  */
-int cd_help_func(const char *keys)
+int cd_help_func(const char *key)
 {
 	char *str;
 	char buffer[200];
 
 	getcwd(buffer, 200);
-	str = environ_access_management(GET_VAL, keys, NULL);
+	str = environ_access_management(GET_VAL, key, NULL);
 	if (chdir(str) == -1)
 	{
 		free(str);
@@ -46,19 +46,19 @@ int cd_help_func2(const char *paths)
  *@commd: Buffer that stoes passed command
  *Return: Always success else 0
  */
-int changedir(cmd_t *commd)
+int changedir(cmd_t *command)
 {
 	int lenght;
 
-	lenght = _string2dlenght(commd->args + 1);
+	lenght = _string2dlenght(command->args + 1);
 	if (lenght >= 1)
 	{
-		if (_stringcompare("-", commd->args[1]))
+		if (_stringcompare("-", command->args[1]))
 			return (cd_help_func("OLDPWD"));
-		else if (_stringcompare("~", commd->args[1]))
-		return (cd_help_func2("HOME"));
+		else if (_stringcompare("~", command->args[1]))
+			return (cd_help_func("HOME"));
 		else
-			return (cd_help_func2(commd->args[1]));
+			return (cd_help_func2(command->args[1]));
 	}
 	else if (!lenght)
 		return (cd_help_func("HOME"));
