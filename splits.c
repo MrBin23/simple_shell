@@ -12,19 +12,13 @@ int check_diam(const char *string, const char *diam)
 
 	iterates = 0;
 	while (string[iterates] && diam[iterates] &&
-			string[iterates] == diam[iterates])
-			{
-			iterates++;
-			}
-			if (diam[iterates])
-			{
-			return (0);
-			}
-			if (string[iterates] == diam[iterates - 1])
-			{
-			return (2);
-			}
-			return (1);
+		string[iterates] == diam[iterates])
+		iterates++;
+	if (diam[iterates])
+		return (0);
+	if (string[iterates] == diam[iterates - 1])
+		return (2);
+	return (1);
 }
 /**
  * free_backs - function will free the backs

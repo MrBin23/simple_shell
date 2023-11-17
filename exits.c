@@ -18,7 +18,7 @@ int exits_func(cmd_t *commd)
 			state_var_global(GET_SHELL_NAME, NULL),
 			*((int *)state_var_global(GET_LINE_NUMBER, NULL)),
 			commd->args[1]);
-		return(2);
+		return (2);
 	}
 	else
 	{

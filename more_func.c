@@ -3,7 +3,7 @@
  * set_val - set a key-value pair ina  mapp by updating entry
  * @map: pointer to struct
  * @key: entry key
- * @val: entry value
+ * @value: entry value
  * Return: 0 or 1 on success
  */
 int set_val(obj_t *map, const char *key, const char *value)

@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * free_command - frees command
- * @data: free this data
+ * @datas: free this data
  * Return: void
  */
 void free_command(void *datas)
