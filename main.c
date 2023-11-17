@@ -14,7 +14,7 @@ int main(int ac, char *av[])
 	signal(SIGINT, sigint_handler);
 	environ_access_management(INIT_ENVIRON, NULL, NULL);
 	feed_environ_var(__environ);
-	built_in_management(SET_BUILTIN, "exit", _exitting);
+	built_in_management(SET_BUILTIN, "exit", exits_func);
 	built_in_management(SET_BUILTIN, "env", _environmt);
 	built_in_management(SET_BUILTIN, "setenv", setenviron);
 	built_in_management(SET_BUILTIN, "unsetenv", _unsetenviron);

@@ -71,7 +71,7 @@ size_t _get_lenght_withnospace(const char *lines, size_t ends)
  *@ends: ends of line checked for
  *Return: ALways the new string line
  */
-size_t *_get_newline_withnospace(const char *lines, size_t ends)
+char *_get_newline_withnospace(const char *lines, size_t ends)
 {
 	size_t beggin;
 	size_t indx;

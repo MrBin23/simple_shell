@@ -23,21 +23,4 @@ int _isdigit(const char *str)
 	}
 	return (1);
 }
-/**
- * listlenght - calculate the lenght of a linked list
- *
- *@lists: to the lenght of a linked list
- *Return: The lenght of a list
- */
-size_t listlenght(const list_t *lists)
-{
-	size_t lenght;
 
-	lenght = 0;
-	while (lists)
-	{
-		lists = lists->next;
-		lenght++;
-	}
-	return (lenght);
-}

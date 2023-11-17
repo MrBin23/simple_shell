@@ -82,7 +82,7 @@ void *environ_access_management(environ_action_t action,
  * @function: executed function
  * Return: NULL
  */
-builtin_t built_in_management(builtin_cmd_t action, char *name,
+builtins_t built_in_management(builtin_cmd_t action, char *name,
 		int (*function)(cmd_t *cmd))
 {
 	static int obj_size;

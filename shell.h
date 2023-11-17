@@ -78,6 +78,7 @@ typedef enum builtin_cmd_s
 	GET_BUILTIN,
 	SET_BUILTIN
 } builtin_cmd_t;
+
 /**
  * struct list_s - nodes of a linked list
  * @datas: content of  a linked list
@@ -174,7 +175,7 @@ char **conv_env_to_2darray(void);
 void *state_var_global(global_cmd_t action, char **str);
 void *environ_access_management(environ_action_t action,
 		const char *key, const char *val);
-builtin_t built_in_management(builtin_cmd_t action, char *name,
+builtins_t built_in_management(builtin_cmd_t action, char *name,
 		int (*function)(cmd_t *cmd));
 void *_realloc(void *prev_buff, size_t prev_size, size_t new_size);
 int status_management(status_cmd_t cmd_action, int new_status);
@@ -207,7 +208,7 @@ size_t find_next_diam(const char *lines, const char *diam);
 char **_splits(const char *lines, const char *diam);
 char *_rem_whitespace(const char *lines);
 size_t _get_lenght_withnospace(const char *lines, size_t ends);
-size_t *_get_newline_withnospace(const char *lines, size_t ends);
+char *_get_newline_withnospace(const char *lines, size_t ends);
 int exits_func(cmd_t *commd);
 int cd_help_func(const char *keys);
 int cd_help_func2(const char *paths);
