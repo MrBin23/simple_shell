@@ -45,7 +45,7 @@ typedef enum environ_action_s
 
 /**
  * enum command_type_e - type of a command
- * @BUILT_INS: means command is built in
+ * @BUILTINS: means command is built in
  * @EXTERNAL: an external command
  * @NOT_FOUND: command not found
  */
