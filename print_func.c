@@ -63,9 +63,9 @@ int _fprint(int fd, const char *format, ...)
 				if (format[indx] == 'd')
 					prints = prints + fputs_num(fd, va_arg(my_args, int));
 				else if (format[indx] == 's')
-					prints += _fputs(fd, va_arg(my_args, *));
+					prints += _fputs(fd, va_arg(my_args, char *));
 				else
-					prints +=  write(fd, format[indx - 1], 2);
+					prints +=  write(fd, &format[indx - 1], 2);
 			}
 			else
 				prints = prints + write(fd, format + indx, 1);

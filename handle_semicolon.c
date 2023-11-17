@@ -33,9 +33,8 @@ int handle_semicolon(const char *lines)
 		else
 		{
 			state_var_global(SET_2D, colon_commd);
-			environ_access_management(MY_STATUS_UPDATE,
-				built_in_management(
-					GET_BUILTIN,
+			status_management(MY_STATUS_UPDATE,
+				built_in_management(GET_BUILTIN,
 					commd->name, NULL)(commd));
 		}
 		arg_len = _string2dlenght(commd->args);
@@ -62,6 +61,6 @@ void _handle_exec(cmd_t *commd)
 		(char *)state_var_global(GET_SHELL_NAME, NULL),
 		*((int *)state_var_global(GET_LINE_NUMBER, NULL)),
 		commd->name);
-	status_management(UPDATE_STATUS, 126);
+	status_management(MY_STATUS_UPDATE, 126);
 	}
 }

@@ -16,5 +16,5 @@ void free_split(char ***backets)
 		head++;
 	}
 	free(*backets);
-	*backs = NULL;
+	*backets = NULL;
 }

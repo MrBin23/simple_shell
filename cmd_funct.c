@@ -4,12 +4,12 @@
  * @data: free this data
  * Return: void
  */
-void *free_command(void *datas)
+void free_command(void *datas)
 {
 	cmd_t *command;
 
 	command = datas;
-	free_split(command->args);
+	free_split(&command->args);
 	free(datas);
 }
 
@@ -23,7 +23,7 @@ char *check_for_command(char *command, commandtype_t *type)
 {
 	if (built_in_management(GET_BUILTIN, command, NULL))
 	{
-		*type = *BUILTINS;
+		*type = BUILTINS;
 		return (_strdup(command));
 	}
 	return (get_cmd_path(command));
@@ -34,7 +34,7 @@ char *check_for_command(char *command, commandtype_t *type)
  * @tokens: holds command args
  * Return: command allocated
  */
-cmd_t init_command(char **tokens)
+cmd_t *init_command(char **tokens)
 {
 	cmd_t *cmd;
 	struct stat st;
@@ -84,7 +84,7 @@ cmd_t *handle_command(const char *line)
 			if (cmd_name)
 				tokens[0][rator] = cmd_name;
 			else
-				tokens[0][rato] = _strdup("");
+				tokens[0][rator] = _strdup("");
 		}
 		rator++;
 	}
@@ -131,6 +131,6 @@ void exec_cmd(cmd_t *command)
 	else
 	{
 		waitpid(ppid, &state, 0);
-		status_management(UPDATE_STATUS, WEXISTATUS(state));
+		status_management(MY_STATUS_UPDATE, WEXITSTATUS(state));
 	}
 }

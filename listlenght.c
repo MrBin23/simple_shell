@@ -13,7 +13,7 @@ size_t listlenght(const list_t *lists)
 	while (lists)
 	{
 		lists = lists->next;
-		lenght;
+		lenght++;
 	}
 	return (lenght);
 }

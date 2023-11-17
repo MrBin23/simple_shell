@@ -30,7 +30,7 @@ int set_val(obj_t *map, const char *key, const char *value)
 	if (!enter)
 		return (0);
 	enter->key = _strdup(key);
-	enter->val = _strdup(value);
+	enter->value = _strdup(value);
 	add_new_node(&map->backets[indx_backet], enter);
 	return (1);
 }

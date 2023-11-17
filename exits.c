@@ -29,11 +29,11 @@ int exits_func(cmd_t *commd)
 			if (!lenght)
 			{
 				free_command(commd);
-				exits_func(environ_access_management(GET_STATUS, 0));
+				_exit(status_management(GET_STATUS, 0));
 			}
-		lenght = a_toi(commd->args[1];
+		lenght = a_toi(commd->args[1]);
 			free_command(commd);
-			exits_func(lenght);
+			_exit(lenght);
 	}
 	return (0);
 }

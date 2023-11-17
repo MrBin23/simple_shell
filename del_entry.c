@@ -16,7 +16,7 @@ int del_entry(obj_t *map, const char *key)
 	if (!my_list)
 		return (0);
 	my_entry = my_list->datas;
-	if (_strcmp(my_entry->key, key))
+	if (_stringcompare(my_entry->key, key))
 	{
 		map->backets[ret_ind] = my_list->next;
 		clear_entry(my_list->datas);
@@ -26,7 +26,7 @@ int del_entry(obj_t *map, const char *key)
 	while (my_list->next)
 	{
 		my_entry = my_list->next->datas;
-		if (_strcmp(my_entry->key, key))
+		if (_stringcompare(my_entry->key, key))
 		{
 			temp = my_list->next;
 			my_list->next = my_list->next->next;

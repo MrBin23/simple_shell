@@ -5,11 +5,7 @@
  * @env: pointer to array of environ variable
  * Return: void
  */
-<<<<<<< HEAD
-void *feed_environ_var(char **env)
-=======
 void feed_environ_var(char **env)
->>>>>>> 0d0915ed135ffacada8f5bcfb4ca773dbbf5ebdd
 {
 	char **new_entry;
 
@@ -28,7 +24,7 @@ void feed_environ_var(char **env)
  */
 char **conv_env_to_2darray(void)
 {
-	list_t *my_key, rator;
+	list_t *my_key, *rator;
 	char **arry;
 	char *temp[2];
 	size_t len;

@@ -38,7 +38,7 @@ char **trim_array_2d(char **str)
 	{
 		if (**str)
 		{
-			new_str[len] = _strdup(*str);
+			new_str[length] = _strdup(*str);
 			length++;
 		}
 		str++;
