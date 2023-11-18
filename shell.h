@@ -44,12 +44,12 @@ typedef enum environ_action_s
 } environ_action_t;
 
 /**
- * struct commandtype_s - type of a command
- * @BUILT_INS: means command is built in
+ * enum commandtype_s - type of a command
+ * @BUILTINS: means command is built in
  * @EXTERNAL: an external command
  * @NOT_FOUND: command not found
  */
-typedef enum command_type_e
+typedef enum commandtype_s
 {
 	BUILTINS,
 	EXTERNAL,
@@ -86,8 +86,8 @@ typedef enum builtin_cmd_s
  */
 typedef struct list_s
 {
-        void *datas;
-        struct list_s *next;
+	void *datas;
+	struct list_s *next;
 } list_t;
 
 /**

@@ -2,23 +2,23 @@
 /**
  * exits_func - function will exit commands
  *
- *@commd: command to exit from
+ *@command: command to exit from
  *Return: always success
  */
-int exits_func(cmd_t *commd)
+int exits_func(cmd_t *command)
 {
 	char **iterates;
 	int lenght;
 
-	iterates = commd->args + 1;
+	iterates = command->args + 1;
 	lenght = _string2dlenght(iterates);
 	if (lenght > 0 && !_isdigit(*iterates))
 	{
 		_fprint(2, "%s: %d: exit: Wrong number: %s\n",
 			state_var_global(GET_SHELL_NAME, NULL),
 			*((int *)state_var_global(GET_LINE_NUMBER, NULL)),
-			commd->args[1]);
-		return(2);
+			command->args[1]);
+		return (2);
 	}
 	else
 	{
@@ -28,11 +28,11 @@ int exits_func(cmd_t *commd)
 		free_split(&iterates);
 			if (!lenght)
 			{
-				free_command(commd);
+				free_command(command);
 				_exit(status_management(GET_STATUS, 0));
 			}
-		lenght = a_toi(commd->args[1]);
-			free_command(commd);
+		lenght = a_toi(command->args[1]);
+			free_command(command);
 			_exit(lenght);
 	}
 	return (0);

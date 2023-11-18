@@ -19,8 +19,8 @@ int handle_error_parsing(char *lines)
 	while (lines[lenght])
 	{
 		if (check_invalid_char_occur(lines + lenght))
-				return (2);
-			lenght++;
+			return (2);
+		lenght++;
 	}
 	return (0);
 }
@@ -33,8 +33,7 @@ int handle_error_parsing(char *lines)
 int check_invalid_char_occur(char *lines)
 {
 	size_t indx;
-	size_t iterates;
-	size_t iterates1;
+	size_t iterates, iterates1;
 	char *invalid_char[] = {";;", "|||", ">>>", "<<"};
 
 	indx = 0;
@@ -43,7 +42,8 @@ int check_invalid_char_occur(char *lines)
 		iterates = 0;
 		iterates1 = 0;
 		while (lines[iterates1] && invalid_char[indx][iterates] &&
-			(invalid_char[indx][iterates] == lines[iterates1] || lines[iterates1] == ' '))
+				(invalid_char[indx][iterates] ==
+				 lines[iterates1] || lines[iterates1] == ' '))
 		{
 			if (lines[iterates1] == ' ')
 				iterates1++;

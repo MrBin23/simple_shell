@@ -9,9 +9,9 @@ int get_comment_pos(const char *lines)
 {
 	int indx;
 
-	for (indx = 0; lines[1] != '\0'; indx++)
+	for (indx = 0; lines[indx] != '\0'; indx++)
 	{
-		if (lines[1] == '#')
+		if (lines[indx] == '#')
 		{
 			return (indx);
 		}

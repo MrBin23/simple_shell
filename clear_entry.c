@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * claer_entry - frees memory asociated with entry in data structure
+ * clear_entry - frees memory asociated with entry in data structure
  * @datas: pointer to entry to be cleared
  */
 void clear_entry(void *datas)

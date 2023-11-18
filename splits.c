@@ -13,18 +13,18 @@ int check_diam(const char *string, const char *diam)
 	iterates = 0;
 	while (string[iterates] && diam[iterates] &&
 			string[iterates] == diam[iterates])
-			{
-			iterates++;
-			}
-			if (diam[iterates])
-			{
-			return (0);
-			}
-			if (string[iterates] == diam[iterates - 1])
-			{
-			return (2);
-			}
-			return (1);
+	{
+		iterates++;
+	}
+	if (diam[iterates])
+	{
+		return (0);
+	}
+	if (string[iterates] == diam[iterates - 1])
+	{
+		return (2);
+	}
+	return (1);
 }
 /**
  * free_backs - function will free the backs
@@ -135,29 +135,29 @@ size_t find_next_diam(const char *lines, const char *diam)
  */
 char **_splits(const char *lines, const char *diam)
 {
-	char **backs;
+	char **backets;
 	size_t backs_len, curr_line_pos;
 	size_t backs_indx, next_diam;
 
 	backs_len = backs_counter(lines, diam);
-	backs = malloc(sizeof(char *) * (backs_len) + 1);
-	if (!backs)
+	backets = malloc(sizeof(char *) * (backs_len) + 1);
+	if (!backets)
 		return (NULL);
 	curr_line_pos = 0;
 	backs_indx = 0;
 	while (backs_indx < backs_len)
 	{
 		next_diam = find_next_diam(lines + curr_line_pos, diam);
-		backs[backs_indx] = malloc(sizeof(char) * (next_diam + 1));
-		if (!backs[backs_indx])
+		backets[backs_indx] = malloc(sizeof(char) * (next_diam + 1));
+		if (!backets[backs_indx])
 		{
-			free_backs(backs, backs_indx);
+			free_backs(backets, backs_indx);
 			return (NULL);
 		}
-		_copies(backs[backs_indx], lines + curr_line_pos, next_diam);
+		_copies(backets[backs_indx], lines + curr_line_pos, next_diam);
 		backs_indx++;
 		curr_line_pos += next_diam + _stringlenght(diam);
 	}
-	backs[backs_len] = NULL;
-	return (backs);
+	backets[backs_len] = NULL;
+	return (backets);
 }

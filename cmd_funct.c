@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * free_command - frees command
- * @data: free this data
+ * @datas: free this data
  * Return: void
  */
 void free_command(void *datas)
@@ -99,24 +99,24 @@ cmd_t *handle_command(const char *line)
  */
 void exec_cmd(cmd_t *command)
 {
-	int error, ppid, state;
+	int error, p_pid, state;
 
-	ppid = fork();
-	if (ppid < 0)
+	p_pid = fork();
+	if (p_pid < 0)
 	{
 		perror((char *)state_var_global(GET_SHELL_NAME, NULL));
 		status_management(MY_STATUS_UPDATE, 1);
 		return;
 	}
-	if (!ppid)
+	if (!p_pid)
 	{
 		execve(command->name, command->args, __environ);
 		error = errno;
 		if (errno == EACCES)
 		{
-			_fprint(2, "%s: %d: %s: permission denied/n",
+			_fprint(2, "%s: %d: %s: permission denied\n",
 					(char *)state_var_global(GET_SHELL_NAME, NULL),
-					*((int *)state_var_global(GET_SHELL_NAME, NULL)), command->name);
+					*((int *)state_var_global(GET_LINE_NUMBER, NULL)), command->name);
 			error = 126;
 		}
 		else
@@ -130,7 +130,7 @@ void exec_cmd(cmd_t *command)
 	}
 	else
 	{
-		waitpid(ppid, &state, 0);
+		waitpid(p_pid, &state, 0);
 		status_management(MY_STATUS_UPDATE, WEXITSTATUS(state));
 	}
 }

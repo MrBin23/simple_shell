@@ -16,7 +16,7 @@ char *evaluate_env_var(char *environ_key)
 	}
 	if (_stringcompare(environ_key, "$"))
 	{
-		return(_itoa(getpid()));
+		return (_itoa(getpid()));
 	}
 	val = environ_access_management(GET_VAL, environ_key, NULL);
 	return (val);
