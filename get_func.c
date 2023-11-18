@@ -1,29 +1,29 @@
 #include "shell.h"
 /**
  * get_cmd_path - gets command and return its path
- * @cmd: looks for its path
+ * @command: looks for its path
  * Return: located path command
  */
-char *get_cmd_path(char *cmd)
+char *get_cmd_path(char *command)
 {
 	char *my_cmd, *my_path, **_dpath, **rator;
 
 	struct stat st;
 
-	if ((cmd[0] == '.' || cmd[0] == '/') && !stat(cmd, &st))
+	if ((command[0] == '.' || command[0] == '/') && !stat(command, &st))
 	{
-		return (_strdup(cmd));
+		return (_strdup(command));
 	}
 	my_path = environ_access_management(GET_VAL, "PATH", NULL);
 	if (!my_path)
-		return (_strdup(cmd));
+		return (_strdup(command));
 	rator = _dpath = _splits(my_path, ":");
 	free(my_path);
 
 	while (*rator)
 	{
 		my_path = _strcat(*rator, "/");
-		my_cmd = _strcat(my_path, cmd);
+		my_cmd = _strcat(my_path, command);
 		free(my_path);
 		if (!stat(my_cmd, &st))
 		{
@@ -34,7 +34,7 @@ char *get_cmd_path(char *cmd)
 		rator++;
 	}
 	free_split(&_dpath);
-	return (_strdup(cmd));
+	return (_strdup(command));
 }
 
 /**
@@ -56,18 +56,18 @@ int gethash_code(const char *key)
 
 /**
  * get_val - retrieves the associated value with a given key
- * @obj: object containing key value pair
+ * @mapp: object containing key value pair
  * @key: to search for value
  * Return: value associated with key if not found
  */
-char *get_val(obj_t *obj, const char *key)
+char *get_val(obj_t *mapp, const char *key)
 {
 	int indx_backt;
 	list_t *backt;
 	enter_t *enter;
 
 	indx_backt = gethash_code(key);
-	backt = obj->backets[indx_backt];
+	backt = mapp->backets[indx_backt];
 	while (backt)
 	{
 		enter = backt->datas;
@@ -87,7 +87,7 @@ obj_t *init_mapt(void)
 	obj_t *my_map;
 	int rator;
 
-	my_map = malloc(sizeof(obj_t));
+	my_map = (obj_t *)malloc(sizeof(obj_t));
 	rator = 0;
 
 	while (rator <  BACKET_SIZE)

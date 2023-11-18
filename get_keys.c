@@ -7,8 +7,7 @@
  */
 list_t *getkeys(const obj_t *mapp)
 {
-	list_t *lists;
-	list_t *iterates;
+	list_t *lists, *iterates;
 	enter_t *enter;
 	int iterator;
 

@@ -9,7 +9,7 @@ int handle_semicolon(const char *lines)
 {
 	char **colon_commd;
 	char **iterator;
-	cmd_t *commd;
+	cmd_t *command;
 	int arg_len;
 
 	iterator = colon_commd = _splits(lines, ";");
@@ -19,27 +19,27 @@ int handle_semicolon(const char *lines)
 	}
 	while (*iterator)
 	{
-		commd = handle_command(*iterator);
-		if (commd->type == NOT_FOUND)
+		command = handle_command(*iterator);
+		if (command->type == NOT_FOUND)
 		{
 			_fprint(2, "%s: %d: %s: not found\n",
 				(char *)state_var_global(GET_SHELL_NAME, NULL),
 				*((int *)state_var_global(GET_LINE_NUMBER, NULL)),
-				commd->name);
+				command->name);
 			status_management(MY_STATUS_UPDATE, 127);
 		}
-		else if (commd->type == EXTERNAL)
-			_handle_exec(commd);
+		else if (command->type == EXTERNAL)
+			_handle_exec(command);
 		else
 		{
 			state_var_global(SET_2D, colon_commd);
 			status_management(MY_STATUS_UPDATE,
 				built_in_management(GET_BUILTIN,
-					commd->name, NULL)(commd));
+					command->name, NULL)(command));
 		}
-		arg_len = _string2dlenght(commd->args);
-		environ_access_management(SET_ENTRY, "_", commd->args[arg_len - 1]);
-		free_command(commd);
+		arg_len = _string2dlenght(command->args);
+		environ_access_management(SET_ENTRY, "_", command->args[arg_len - 1]);
+		free_command(command);
 		iterator++;
 	}
 	free_split(&colon_commd);
@@ -48,19 +48,19 @@ int handle_semicolon(const char *lines)
 /**
  * _handle_exec - function will give execution permission
  *
- *@commd: command that will be executed
+ *@command: command that will be executed
  *Return: Nothing
  */
-void _handle_exec(cmd_t *commd)
+void _handle_exec(cmd_t *command)
 {
-	if (access(commd->name, F_OK | X_OK) != -1)
-		exec_cmd(commd);
+	if (access(command->name, F_OK | X_OK) != -1)
+		exec_cmd(command);
 	else
 	{
 	_fprint(2, "%s: %d: %s: permission denied\n",
 		(char *)state_var_global(GET_SHELL_NAME, NULL),
 		*((int *)state_var_global(GET_LINE_NUMBER, NULL)),
-		commd->name);
+		command->name);
 	status_management(MY_STATUS_UPDATE, 126);
 	}
 }

@@ -2,7 +2,7 @@
 /**
  * cd_help_func - helper functions to change dir
  *
- *@keys: Environment variable
+ *@key: Environment variable
  *Return: Always sucess
  */
 int cd_help_func(const char *key)
@@ -43,7 +43,7 @@ int cd_help_func2(const char *paths)
 /**
  * changedir - biut in function to change directory
  *
- *@commd: Buffer that stoes passed command
+ *@command: Buffer that stoes passed command
  *Return: Always success else 0
  */
 int changedir(cmd_t *command)

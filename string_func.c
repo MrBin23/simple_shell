@@ -23,7 +23,7 @@ char *_strcat(const char *str1, const char *str2)
 	}
 	while (rator - len1 < len2)
 	{
-		new_str[rator] = str2[rator - len2];
+		new_str[rator] = str2[rator - len1];
 		rator++;
 	}
 	new_str[rator] = 0;
@@ -57,19 +57,19 @@ char *_strdup(const char *str)
 
 /**
  * str_slice - creates a new string slice from the specified input string
- * @my_line: line to be sliced
+ * @lines: line to be sliced
  * @start: starting index of sli
  * @end: end index of sli
  * Return: dynamically allocated string slice
  */
-char *str_slice(const char *my_line, int start, int end)
+char *str_slice(const char *lines, int start, int end)
 {
 	int length, rator;
 	char *sli;
 
 	if (start < 0)
 		start = 0;
-	length = _stringlenght(my_line);
+	length = _stringlenght(lines);
 	if (length < end || end < 0)
 		end = length;
 	sli = malloc(sizeof(char) * (end - start + 1));
@@ -77,7 +77,7 @@ char *str_slice(const char *my_line, int start, int end)
 
 	while (start + rator < end)
 	{
-		sli[rator] = my_line[start + rator];
+		sli[rator] = lines[start + rator];
 		rator++;
 	}
 	sli[rator] = 0;

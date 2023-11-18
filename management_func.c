@@ -1,15 +1,15 @@
 #include "shell.h"
 /**
  * status_management - manages status variable based on specified action
- * @cmd_action: action to perfrom on status variable
+ * @action: action to perfrom on status variable
  * @new_status: updates status variable
  * Return: current value  of status variable
  */
-int status_management(status_cmd_t cmd_action, int new_status)
+int status_management(status_cmd_t action, int new_status)
 {
 	static int status;
 
-	if (cmd_action == MY_STATUS_UPDATE)
+	if (action == MY_STATUS_UPDATE)
 	{
 		status = new_status;
 	}
@@ -83,7 +83,7 @@ void *environ_access_management(environ_action_t action,
  * Return: NULL
  */
 builtins_t built_in_management(builtin_cmd_t action, char *name,
-		int (*function)(cmd_t *cmd))
+		int (*function)(cmd_t *command))
 {
 	static int obj_size;
 	static builtin_t built[10];

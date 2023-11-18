@@ -23,4 +23,3 @@ int _isdigit(const char *str)
 	}
 	return (1);
 }
-

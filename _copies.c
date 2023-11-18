@@ -23,13 +23,13 @@ char *_copies(char *dest, const char *source, size_t size)
 /**
  *_environmt - builtin function that print variables
  *
- *@commd: Contains info bout commands
+ *@command: Contains info bout commands
  *Return: 0 success or error
  */
-int _environmt(cmd_t *commd)
+int _environmt(cmd_t *command)
 {
 	char **iterates;
-	(void)commd;
+	(void)command;
 
 	iterates = __environ;
 	if (!iterates)
