@@ -2,7 +2,7 @@
 /**
  * exits_func - function will exit commands
  *
- *@command: command to exit from
+ *@command: command to exit from, the main command
  *Return: always success
  */
 int exits_func(cmd_t *command)
