@@ -28,7 +28,7 @@ int handle_error_parsing(char *lines)
  * check_invalid_char_occur - function finds invalid characters
  *
  *@lines: Line to check for character that are not valid
- *Return: Invalid character or 0
+ *Return: returns Invalid character or 0
  */
 int check_invalid_char_occur(char *lines)
 {
