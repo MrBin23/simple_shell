@@ -3,7 +3,7 @@
  * map_clear - frees the allocated memory
  *
  *@mapp: Allocated memory to be freed
- *Return: Success
+ *Return: void
  */
 void map_clear(obj_t *mapp)
 {

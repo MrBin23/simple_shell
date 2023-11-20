@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * set_val - set a key-value pair ina  mapp by updating entry
- * @mapp: pointer to struct
+ * @mapp: pointer to struct obj_t
  * @key: entry key
  * @value: entry value
  * Return: 0 or 1 on success
