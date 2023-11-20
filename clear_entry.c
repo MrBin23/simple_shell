@@ -2,6 +2,7 @@
 /**
  * clear_entry - frees memory asociated with entry in data structure
  * @datas: pointer to entry to be cleared
+ * Return: void
  */
 void clear_entry(void *datas)
 {
