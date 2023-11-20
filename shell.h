@@ -71,7 +71,7 @@ typedef struct cmd_s
 /**
  * enum builtin_cmd_s - buitin commands and actions
  * @GET_BUILTIN: get builtin commands
- * @SET_BUILTIN: set builtin commands
+ * @SET_BUILTIN: set builtin commands in shell
  */
 typedef enum builtin_cmd_s
 {
