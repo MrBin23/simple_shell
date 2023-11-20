@@ -130,7 +130,7 @@ size_t find_next_diam(const char *lines, const char *diam)
  * _splits - splitting lines of diameter
  *
  *@lines: buffer line to be splitted
- *@diam: diameter that will be split in
+ *@diam: diameter that will be splitted
  *Return: arrays that ends with NYULL
  */
 char **_splits(const char *lines, const char *diam)
